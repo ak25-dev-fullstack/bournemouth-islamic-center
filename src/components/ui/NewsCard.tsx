@@ -27,7 +27,7 @@ export default function NewsCard({ post, featured = false }: NewsCardProps) {
 
   return (
     <article
-      className={`bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-md transition-shadow group ${
+      className={`bg-white rounded-3xl border border-stone-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group ${
         post.pinned ? "ring-2 ring-amber-400" : ""
       } ${featured ? "flex flex-col sm:flex-row" : "flex flex-col"}`}
     >

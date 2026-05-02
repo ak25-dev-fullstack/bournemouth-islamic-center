@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import logoTransparent from "@/assets/Logo_transparent.png";
+import heroBg from "@/assets/background.png";
+import bluecoolImg from "@/assets/bluecool.webp";
+import abstractImg from "@/assets/islamic-design-greeting-card-background_1024307-3446.avif";
 import SectionHeading from "@/components/ui/SectionHeading";
 import NewsCard from "@/components/ui/NewsCard";
 import EventCard from "@/components/ui/EventCard";
@@ -42,45 +47,57 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden min-h-[88vh] flex items-center">
+        {/* Background mosque photo */}
+        <Image
+          src={heroBg}
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Main dark gradient */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")`,
-          }}
+          className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/25"
         />
-        <Container className="relative py-20 sm:py-28">
+
+        <Container className="relative py-24 w-full">
           <div className="max-w-2xl">
-            <p className="text-emerald-300 text-sm font-semibold uppercase tracking-widest mb-3">
+            <Image
+              src={logoTransparent}
+              alt="Bournemouth Islamic Centre"
+              width={200}
+              height={100}
+              className="mb-7 brightness-0 invert opacity-90"
+            />
+            <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">
               Welcome to
             </p>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
-              Bournemouth Islamic Centre
-              <span className="block text-emerald-300 text-3xl sm:text-4xl mt-1">
-                &amp; Central Mosque
-              </span>
+            <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-5 tracking-tight">
+              Bournemouth Islamic Centre &amp; Central Mosque
             </h1>
-            <p className="text-emerald-100 text-lg leading-relaxed mb-8 max-w-xl">
+            <p className="text-stone-300 text-lg leading-relaxed mb-10 max-w-lg">
               A welcoming home for worship, community, and learning in the heart
               of Bournemouth. All are welcome.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#prayer-times"
-                className="px-5 py-2.5 rounded-full bg-white text-emerald-800 font-semibold text-sm hover:bg-emerald-50 transition-colors"
+                className="px-6 py-3 rounded-full bg-white text-emerald-900 font-bold text-sm hover:bg-emerald-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
               >
                 Prayer Times
               </Link>
               <Link
                 href="/donate"
-                className="px-5 py-2.5 rounded-full bg-amber-500 text-white font-semibold text-sm hover:bg-amber-600 transition-colors"
+                className="px-6 py-3 rounded-full bg-amber-500 text-white font-bold text-sm hover:bg-amber-400 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
               >
                 Donate
               </Link>
               <Link
                 href="/events"
-                className="px-5 py-2.5 rounded-full border border-white/30 text-white font-semibold text-sm hover:bg-white/10 transition-colors"
+                className="px-6 py-3 rounded-full border border-white/40 text-white font-bold text-sm hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
               >
                 Events
               </Link>
@@ -89,18 +106,34 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── Today at the Mosque ── */}
-      <section className="py-12 bg-white border-b border-stone-100">
-        <Container>
+      {/* ── Prayer Times ── */}
+      <section className="relative py-16 overflow-hidden">
+        {/* Dark gradient background */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-br from-stone-950 via-emerald-950 to-stone-950"
+        />
+        {/* Abstract pattern texture */}
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.06]">
+          <Image src={abstractImg} alt="" fill sizes="100vw" className="object-cover" />
+        </div>
+        {/* Glow orbs */}
+        <div
+          aria-hidden="true"
+          className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"
+        />
+        <Container className="relative">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-1">
               <PrayerTimesWidget />
             </div>
-            <div className="lg:col-span-2 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold text-stone-800 mb-2">
-                Today at the Mosque
-              </h2>
-              <p className="text-stone-500 text-sm mb-6">
+            <div className="lg:col-span-2 flex flex-col justify-center text-white">
+              <h2 className="text-3xl font-bold mb-2">Today at the Mosque</h2>
+              <p className="text-stone-400 text-sm mb-8">
                 Bournemouth Islamic Centre is open daily for all five daily
                 prayers. Our doors are open to all Muslims and those who wish to
                 learn more about Islam.
@@ -132,16 +165,16 @@ export default function HomePage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="flex gap-3 p-4 rounded-xl bg-stone-50 border border-stone-100"
+                    className="flex gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-200"
                   >
-                    <span className="text-xl" aria-hidden="true">
+                    <span className="text-2xl flex-shrink-0" aria-hidden="true">
                       {item.icon}
                     </span>
                     <div>
-                      <p className="text-sm font-semibold text-stone-800">
+                      <p className="text-sm font-semibold text-white">
                         {item.title}
                       </p>
-                      <p className="text-xs text-stone-500 mt-0.5">
+                      <p className="text-xs text-stone-400 mt-0.5">
                         {item.detail}
                       </p>
                     </div>
@@ -154,7 +187,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Quick Navigation ── */}
-      <section className="py-12">
+      <section className="py-16 bg-stone-50">
         <Container>
           <SectionHeading
             title="Explore the Centre"
@@ -165,15 +198,22 @@ export default function HomePage() {
       </section>
 
       {/* ── Latest News ── */}
-      <section className="py-12 bg-white border-y border-stone-100">
-        <Container>
+      <section className="relative py-16 overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 bg-stone-950" />
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.12]">
+          <Image src={bluecoolImg} alt="" fill sizes="100vw" className="object-cover object-center" />
+        </div>
+        <div aria-hidden="true" className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-blue-500/8 blur-3xl pointer-events-none" />
+        <div aria-hidden="true" className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-emerald-600/8 blur-3xl pointer-events-none" />
+        <Container className="relative">
           <SectionHeading
             title="Latest News"
             subtitle="Announcements and community updates"
+            light
             action={
               <Link
                 href="/news"
-                className="text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors"
+                className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 All news &rarr;
               </Link>
@@ -188,19 +228,32 @@ export default function HomePage() {
       </section>
 
       {/* ── Upcoming Events ── */}
-      <section className="py-12">
-        <Container>
+      <section className="relative py-16 overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-br from-stone-900 to-stone-950"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -top-24 right-0 w-80 h-80 rounded-full bg-emerald-700/20 blur-3xl pointer-events-none"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-1/3 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"
+        />
+        <Container className="relative">
           <SectionHeading
-            title="Events &amp; Activities"
+            title="Events & Activities"
             subtitle="What's on this week and beyond"
             action={
               <Link
                 href="/events"
-                className="text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors"
+                className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 Full calendar &rarr;
               </Link>
             }
+            light
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {upcomingEvents.map((event) => (
@@ -211,7 +264,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Revert Video ── */}
-      <section className="py-12 bg-stone-100 border-y border-stone-200">
+      <section className="py-16 bg-stone-100">
         <Container>
           <SectionHeading
             title="Revert Stories"
@@ -230,21 +283,37 @@ export default function HomePage() {
       </section>
 
       {/* ── Current Projects ── */}
-      <section className="py-12 bg-white border-b border-stone-100">
-        <Container>
+      <section className="relative py-16 overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-emerald-950"
+        />
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.06]">
+          <Image src={abstractImg} alt="" fill sizes="100vw" className="object-cover" />
+        </div>
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-amber-400/15 blur-3xl pointer-events-none"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-emerald-600/20 blur-3xl pointer-events-none"
+        />
+        <Container className="relative">
           <SectionHeading
             title="Current Projects"
             subtitle="Help us build a better centre for the community"
             action={
               <Link
                 href="/projects"
-                className="text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors"
+                className="text-sm font-semibold text-emerald-300 hover:text-white transition-colors"
               >
                 All projects &rarr;
               </Link>
             }
+            light
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {activeProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -253,7 +322,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Donation CTA ── */}
-      <section className="py-12">
+      <section className="py-16 bg-white">
         <Container>
           <DonationCTAStrip />
         </Container>

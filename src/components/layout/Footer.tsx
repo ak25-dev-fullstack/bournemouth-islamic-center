@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import logoTransparent from "@/assets/Logo_transparent.png";
 
 export default function Footer() {
   return (
@@ -9,16 +11,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Identity */}
           <div className="lg:col-span-1">
+            <Image
+              src={logoTransparent}
+              alt="Bournemouth Islamic Centre"
+              width={140}
+              height={60}
+              className=" brightness-0 invert"
+            />
             <h2 className="text-white font-bold text-base mb-2">
-              Bournemouth Islamic Centre
+              Bournemouth Islamic Centre & Central Mosque
             </h2>
-            <p className="text-sm text-emerald-300 mb-4">& Central Mosque</p>
             <address className="not-italic text-sm text-emerald-200 leading-relaxed">
-              123 Mosque Road
+            4 St Stephen's Rd
               <br />
               Bournemouth
               <br />
-              BH1 1AA
+              BH2 6JJ
             </address>
           </div>
 
@@ -33,7 +41,7 @@ export default function Footer() {
                   href="tel:+441202000000"
                   className="hover:text-white transition-colors"
                 >
-                  01202 000 000
+                  01202 557 072
                 </a>
               </li>
               <li>
@@ -41,7 +49,7 @@ export default function Footer() {
                   href="mailto:info@bournemouth-ic.org.uk"
                   className="hover:text-white transition-colors"
                 >
-                  info@bournemouth-ic.org.uk
+                  biccm@talk21.com
                 </a>
               </li>
               <li>
@@ -146,7 +154,7 @@ export default function Footer() {
         <div className="border-t border-emerald-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-emerald-400">
           <p>
             &copy; {new Date().getFullYear()} Bournemouth Islamic Centre & Central
-            Mosque. Registered Charity No. 000000.
+            Mosque. Registered Charity No. 1032058.
           </p>
           <div className="flex gap-4">
             <Link href="/about" className="hover:text-white transition-colors">

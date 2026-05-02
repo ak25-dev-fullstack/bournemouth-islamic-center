@@ -13,7 +13,7 @@ export default function VideoCard({ video, featured = false }: VideoCardProps) {
 
   return (
     <article
-      className={`bg-white rounded-xl border border-stone-200 overflow-hidden hover:shadow-md transition-shadow ${
+      className={`bg-white rounded-3xl border border-stone-100 overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ${
         featured ? "flex flex-col lg:flex-row" : "flex flex-col"
       }`}
     >

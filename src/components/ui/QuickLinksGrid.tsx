@@ -83,19 +83,19 @@ const quickLinks = [
 
 export default function QuickLinksGrid() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
       {quickLinks.map((link) => (
         <Link
           key={link.href}
           href={link.href}
-          className="flex flex-col items-start gap-3 p-4 bg-white rounded-xl border border-stone-200 hover:border-emerald-300 hover:shadow-sm transition-all group"
+          className="flex flex-col items-start gap-4 p-5 bg-white rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group border border-stone-100"
         >
-          <div className={`p-2 rounded-lg ${link.color}`}>{link.icon}</div>
+          <div className={`p-3 rounded-2xl ${link.color}`}>{link.icon}</div>
           <div>
-            <p className="text-sm font-semibold text-stone-800 group-hover:text-emerald-700 transition-colors leading-tight">
+            <p className="text-sm font-bold text-stone-800 group-hover:text-emerald-700 transition-colors leading-tight">
               {link.label}
             </p>
-            <p className="text-xs text-stone-400 mt-0.5">{link.description}</p>
+            <p className="text-xs text-stone-400 mt-1">{link.description}</p>
           </div>
         </Link>
       ))}

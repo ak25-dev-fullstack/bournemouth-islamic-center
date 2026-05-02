@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     n.toLocaleString("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
 
   return (
-    <article className="bg-white rounded-xl border border-stone-200 p-6 flex flex-col hover:shadow-md transition-shadow">
+    <article className="bg-white rounded-3xl border border-stone-100 p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3 className="font-bold text-stone-800 text-base leading-snug">
           {project.title}

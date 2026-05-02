@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import iconOnly from "@/assets/icon_only.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -15,26 +17,50 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 10);
+      if (currentY < 100) {
+        setVisible(true);
+      } else if (currentY > lastScrollY.current) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-stone-200 shadow-sm">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-md"
+          : "bg-white border-b border-stone-200 shadow-sm"
+      } ${visible ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
+        
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-full bg-emerald-700 flex items-center justify-center flex-shrink-0">
-              <svg
-                viewBox="0 0 24 24"
-                fill="white"
-                className="w-5 h-5"
-                aria-hidden="true"
-              >
-                <path d="M12 2C9 2 6.5 4.5 6.5 7.5c0 1.8.9 3.4 2.2 4.4L12 22l3.3-10.1c1.3-1 2.2-2.6 2.2-4.4C17.5 4.5 15 2 12 2z" />
-              </svg>
-            </div>
+            <Image
+              src={iconOnly}
+              alt="Bournemouth Islamic Centre"
+              width={120}
+              height={120}
+              className="flex-shrink-0"
+            />
             <div className="leading-tight">
               <span className="block text-sm font-bold text-emerald-800 group-hover:text-emerald-600 transition-colors">
-                Bournemouth Islamic Centre
+                Bournemouth Islamic Centre 
               </span>
               <span className="block text-xs text-stone-500">
                 & Central Mosque

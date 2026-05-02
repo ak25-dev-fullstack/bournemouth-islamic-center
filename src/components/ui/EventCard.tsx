@@ -17,9 +17,9 @@ export default function EventCard({ event }: EventCardProps) {
     audienceColors[event.audience] ?? "bg-stone-100 text-stone-700";
 
   return (
-    <article className="bg-white rounded-xl border border-stone-200 p-5 hover:shadow-md transition-shadow flex gap-4">
+    <article className="bg-white rounded-3xl border border-stone-100 p-5 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex gap-4">
       {/* Date block */}
-      <div className="flex-shrink-0 w-14 h-14 rounded-lg bg-emerald-700 text-white flex flex-col items-center justify-center text-center">
+      <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-700 text-white flex flex-col items-center justify-center text-center">
         {isRecurring ? (
           <span className="text-xs font-semibold leading-tight px-1 text-center">
             {event.recurringLabel?.split(" ")[1] ?? "Weekly"}
