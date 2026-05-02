@@ -6,9 +6,9 @@ interface ProjectCardProps {
 }
 
 const statusConfig = {
-  active: { label: "Active", color: "bg-emerald-100 text-emerald-800" },
-  planning: { label: "Planning", color: "bg-blue-100 text-blue-800" },
-  completed: { label: "Completed", color: "bg-stone-100 text-stone-600" },
+  active: { label: "Active", color: "bg-emerald-900/40 text-emerald-300 border border-emerald-700/30" },
+  planning: { label: "Planning", color: "bg-blue-900/40 text-blue-300 border border-blue-700/30" },
+  completed: { label: "Completed", color: "bg-stone-800/60 text-stone-400 border border-stone-700/30" },
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -23,9 +23,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     n.toLocaleString("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
 
   return (
-    <article className="bg-white rounded-3xl border border-stone-100 p-6 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <article className="bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm p-6 flex flex-col hover:shadow-xl hover:bg-white/8 hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="font-bold text-stone-800 text-base leading-snug">
+        <h3 className="font-bold text-white text-base leading-snug">
           {project.title}
         </h3>
         <span
@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </span>
       </div>
 
-      <p className="text-stone-500 text-sm leading-relaxed flex-grow mb-5">
+      <p className="text-stone-400 text-sm leading-relaxed flex-grow mb-5">
         {project.summary}
       </p>
 
@@ -43,12 +43,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {progress !== null && project.fundingGoal && project.fundingRaised && (
         <div className="mb-5">
           <div className="flex justify-between text-xs text-stone-500 mb-1.5">
-            <span className="font-medium text-stone-700">
+            <span className="font-medium text-stone-300">
               {formatAmount(project.fundingRaised)} raised
             </span>
             <span>Goal: {formatAmount(project.fundingGoal)}</span>
           </div>
-          <div className="h-2 bg-stone-100 rounded-full overflow-hidden">
+          <div className="h-2 bg-stone-800 rounded-full overflow-hidden">
             <div
               className="h-full bg-emerald-500 rounded-full transition-all"
               style={{ width: `${progress}%` }}
@@ -58,14 +58,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               aria-valuemax={project.fundingGoal}
             />
           </div>
-          <p className="text-xs text-stone-400 mt-1">
+          <p className="text-xs text-stone-500 mt-1">
             {Math.round(progress)}% funded
           </p>
         </div>
       )}
 
       {project.completed && project.completedYear && (
-        <p className="text-xs text-stone-400 mb-4">
+        <p className="text-xs text-stone-500 mb-4">
           Completed in {project.completedYear}
         </p>
       )}
@@ -73,7 +73,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {project.cta && !project.completed && (
         <Link
           href="/donate"
-          className="mt-auto inline-flex items-center justify-center px-4 py-2 rounded-lg bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 transition-colors"
+          className="mt-auto inline-flex items-center justify-center px-4 py-2 rounded-xl bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-600 transition-colors"
         >
           {project.cta}
         </Link>

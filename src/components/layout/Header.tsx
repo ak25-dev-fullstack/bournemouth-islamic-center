@@ -43,8 +43,8 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-md"
-          : "bg-white border-b border-stone-200 shadow-sm"
+          ? "bg-stone-950/90 backdrop-blur-md border-b border-white/10 shadow-lg"
+          : "bg-stone-950/70 backdrop-blur-sm border-b border-white/5"
       } ${visible ? "translate-y-0" : "-translate-y-full"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
@@ -59,10 +59,10 @@ export default function Header() {
               className="flex-shrink-0"
             />
             <div className="leading-tight">
-              <span className="block text-sm font-bold text-emerald-800 group-hover:text-emerald-600 transition-colors">
-                Bournemouth Islamic Centre 
+              <span className="block text-sm font-bold text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                Bournemouth Islamic Centre
               </span>
-              <span className="block text-xs text-stone-500">
+              <span className="block text-xs text-stone-400">
                 & Central Mosque
               </span>
             </div>
@@ -74,7 +74,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-stone-700 rounded-md hover:bg-stone-100 hover:text-emerald-700 transition-colors"
+                className="px-3 py-2 text-sm font-medium text-stone-300 rounded-md hover:bg-white/10 hover:text-emerald-400 transition-colors"
               >
                 {link.label}
               </Link>
@@ -90,7 +90,7 @@ export default function Header() {
               Donate
             </Link>
             <button
-              className="md:hidden p-2 rounded-md text-stone-600 hover:bg-stone-100"
+              className="md:hidden p-2 rounded-md text-stone-300 hover:bg-white/10"
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-label="Toggle navigation menu"
@@ -125,14 +125,14 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-stone-100 bg-white px-4 pb-4 pt-2">
+        <div className="md:hidden border-t border-white/10 bg-stone-950/95 backdrop-blur-md px-4 pb-4 pt-2">
           <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="px-3 py-2.5 text-sm font-medium text-stone-700 rounded-md hover:bg-stone-50 hover:text-emerald-700 transition-colors"
+                className="px-3 py-2.5 text-sm font-medium text-stone-300 rounded-md hover:bg-white/10 hover:text-emerald-400 transition-colors"
               >
                 {link.label}
               </Link>

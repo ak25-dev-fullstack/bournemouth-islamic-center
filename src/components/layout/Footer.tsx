@@ -22,7 +22,7 @@ export default function Footer() {
               Bournemouth Islamic Centre & Central Mosque
             </h2>
             <address className="not-italic text-sm text-emerald-200 leading-relaxed">
-            4 St Stephen's Rd
+              4 St Stephen's Rd
               <br />
               Bournemouth
               <br />
@@ -38,7 +38,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-emerald-200">
               <li>
                 <a
-                  href="tel:+441202000000"
+                  href="tel:+441202557072"
                   className="hover:text-white transition-colors"
                 >
                   01202 557 072
@@ -46,10 +46,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@bournemouth-ic.org.uk"
+                  href="mailto:bic.sendmessage@gmail.com"
                   className="hover:text-white transition-colors"
                 >
-                  biccm@talk21.com
+                  bic.sendmessage@gmail.com
                 </a>
               </li>
               <li>

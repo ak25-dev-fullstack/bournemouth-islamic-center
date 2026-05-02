@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import heroBg from "@/assets/green mosque.png";
+import heroBg from "@/assets/abstract-arabesque-shadow-sunset-background-260nw-2745420555 copy.png";
 import outsideImg from "@/assets/outside.jpg";
 import insideImg from "@/assets/inside.jpg";
 import imamImg from "@/assets/imam.jpg";

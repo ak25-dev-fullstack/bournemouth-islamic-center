@@ -187,11 +187,14 @@ export default function HomePage() {
       </section>
 
       {/* ── Quick Navigation ── */}
-      <section className="py-16 bg-stone-50">
-        <Container>
+      <section className="relative py-16 overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-950 to-stone-900" />
+        <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-emerald-700/10 blur-3xl pointer-events-none" />
+        <Container className="relative">
           <SectionHeading
             title="Explore the Centre"
             subtitle="Everything you need in one place"
+            light
           />
           <QuickLinksGrid />
         </Container>
@@ -264,19 +267,22 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Revert Video ── */}
-      <section className="py-16 bg-stone-100">
-        <Container>
+      <section className="relative py-16 overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950" />
+        <div aria-hidden="true" className="absolute bottom-0 right-1/4 w-72 h-72 rounded-full bg-amber-500/8 blur-3xl pointer-events-none" />
+        <Container className="relative">
           <SectionHeading
             title="Revert Stories"
             subtitle="Journeys to Islam from members of our community"
             action={
               <Link
                 href="/reverts"
-                className="text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors"
+                className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 More stories &rarr;
               </Link>
             }
+            light
           />
           <VideoCard video={featuredVideo} featured />
         </Container>
@@ -322,8 +328,9 @@ export default function HomePage() {
       </section>
 
       {/* ── Donation CTA ── */}
-      <section className="py-16 bg-white">
-        <Container>
+      <section className="relative py-16 overflow-hidden">
+        <div aria-hidden="true" className="absolute inset-0 bg-stone-950" />
+        <Container className="relative">
           <DonationCTAStrip />
         </Container>
       </section>

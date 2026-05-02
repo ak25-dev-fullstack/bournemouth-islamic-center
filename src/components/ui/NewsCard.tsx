@@ -7,9 +7,9 @@ interface NewsCardProps {
 }
 
 const categoryColors: Record<NewsPost["category"], string> = {
-  announcement: "bg-amber-100 text-amber-800",
-  community: "bg-emerald-100 text-emerald-800",
-  event: "bg-blue-100 text-blue-800",
+  announcement: "bg-amber-900/40 text-amber-300 border border-amber-700/30",
+  community: "bg-emerald-900/40 text-emerald-300 border border-emerald-700/30",
+  event: "bg-blue-900/40 text-blue-300 border border-blue-700/30",
 };
 
 const categoryLabels: Record<NewsPost["category"], string> = {
@@ -27,18 +27,18 @@ export default function NewsCard({ post, featured = false }: NewsCardProps) {
 
   return (
     <article
-      className={`bg-white rounded-3xl border border-stone-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group ${
-        post.pinned ? "ring-2 ring-amber-400" : ""
+      className={`bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm overflow-hidden hover:shadow-xl hover:bg-white/8 hover:-translate-y-1 transition-all duration-300 group ${
+        post.pinned ? "ring-2 ring-amber-500/50" : ""
       } ${featured ? "flex flex-col sm:flex-row" : "flex flex-col"}`}
     >
       {/* Placeholder image area */}
       <div
-        className={`bg-gradient-to-br from-emerald-50 to-stone-100 flex items-center justify-center flex-shrink-0 ${
+        className={`bg-gradient-to-br from-emerald-900/40 to-stone-900 flex items-center justify-center flex-shrink-0 ${
           featured ? "sm:w-64 h-48 sm:h-auto" : "h-44"
         }`}
       >
         <svg
-          className="w-12 h-12 text-emerald-200"
+          className="w-12 h-12 text-emerald-700/50"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -50,7 +50,7 @@ export default function NewsCard({ post, featured = false }: NewsCardProps) {
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex items-center gap-2 mb-3">
           {post.pinned && (
-            <span className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-amber-300 bg-amber-900/40 border border-amber-700/30 px-2 py-0.5 rounded-full">
               Pinned
             </span>
           )}
@@ -64,23 +64,23 @@ export default function NewsCard({ post, featured = false }: NewsCardProps) {
         </div>
 
         <h3
-          className={`font-bold text-stone-800 group-hover:text-emerald-700 transition-colors leading-snug mb-2 ${
+          className={`font-bold text-white group-hover:text-emerald-400 transition-colors leading-snug mb-2 ${
             featured ? "text-xl" : "text-base"
           }`}
         >
           <Link href={`/news/${post.slug}`}>{post.title}</Link>
         </h3>
 
-        <p className="text-stone-500 text-sm leading-relaxed flex-grow">
+        <p className="text-stone-400 text-sm leading-relaxed flex-grow">
           {post.excerpt}
         </p>
 
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-stone-100">
-          <time className="text-xs text-stone-400" dateTime={post.date}>
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/10">
+          <time className="text-xs text-stone-500" dateTime={post.date}>
             {formattedDate}
           </time>
           {post.author && (
-            <span className="text-xs text-stone-400">{post.author}</span>
+            <span className="text-xs text-stone-500">{post.author}</span>
           )}
         </div>
       </div>
