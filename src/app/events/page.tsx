@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
+import sunsetBg from "@/assets/sunset.png";
 import Container from "@/components/ui/Container";
 import EventCard from "@/components/ui/EventCard";
 
@@ -104,11 +106,20 @@ export default function EventsPage() {
   return (
     <div className="bg-ivory min-h-screen">
       {/* Page header */}
-      <div className="bg-white border-b border-ink/8 py-12">
-        <Container>
+      <div className="relative overflow-hidden py-28 flex items-end">
+        <Image
+          src={sunsetBg}
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/20" />
+        <Container className="relative">
           <p className="text-xs font-medium text-gold uppercase tracking-wider mb-3">What&apos;s on</p>
-          <h1 className="text-[48px] text-ink">Events &amp; activities</h1>
-          <p className="text-sm text-muted mt-3">Regular programmes and upcoming special events</p>
+          <h1 className="text-[52px] text-white leading-tight">Events &amp; activities</h1>
+          <p className="text-white/70 mt-3 text-base">Regular programmes and upcoming special events</p>
         </Container>
       </div>
 

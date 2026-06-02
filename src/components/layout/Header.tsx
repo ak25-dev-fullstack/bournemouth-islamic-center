@@ -48,8 +48,8 @@ export default function Header() {
             <Image
               src={iconOnly}
               alt="Bournemouth Islamic Centre"
-              width={44}
-              height={44}
+              width={72}
+              height={72}
               className="flex-shrink-0"
             />
             <div className="hidden sm:block leading-tight">

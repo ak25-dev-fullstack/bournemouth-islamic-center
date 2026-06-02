@@ -10,13 +10,13 @@ import DonationCTAStrip from "@/components/ui/DonationCTAStrip";
 import EventCard from "@/components/ui/EventCard";
 import NewsCard from "@/components/ui/NewsCard";
 import SectionHeading from "@/components/ui/SectionHeading";
-import VideoCard from "@/components/ui/VideoCard";
 import PrayerTimesWidget from "@/components/home/PrayerTimesWidget";
 import QuickLinksGrid from "@/components/home/QuickLinksGrid";
 
+import revertPhoto from "@/assets/revert-story.jpg";
+
 import { events } from "@/data/events";
 import { newsPosts } from "@/data/news";
-import { revertVideos } from "@/data/videos";
 
 export const metadata: Metadata = {
   title: "Bournemouth Islamic Centre & Central Mosque",
@@ -32,7 +32,6 @@ function GoldDivider() {
 export default function HomePage() {
   const latestNews = newsPosts.slice(0, 3);
   const upcomingEvents = events.slice(0, 3);
-  const featuredVideo = revertVideos.find((v) => v.featured) ?? revertVideos[0];
 
   return (
     <>
@@ -210,19 +209,45 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── Featured Revert Video ── */}
+      {/* ── Revert Stories ── */}
       <section className="py-24 bg-ivory">
         <Container>
           <SectionHeading
             title="Revert stories"
             subtitle="Journeys to Islam from members of our community"
-            action={
-              <Link href="/reverts" className="text-sm font-medium text-gold hover:text-copper transition-colors duration-150">
-                More stories →
-              </Link>
-            }
           />
-          <VideoCard video={featuredVideo} featured />
+          <Link
+            href="/reverts"
+            className="group block bg-white border border-ink/8 rounded-lg overflow-hidden hover:border-gold/40 transition-colors duration-150 max-w-3xl mx-auto"
+          >
+            <div className="relative aspect-[16/7] overflow-hidden">
+              <Image
+                src={revertPhoto}
+                alt="Revert stories"
+                fill
+                sizes="(min-width: 1024px) 768px, 100vw"
+                className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
+            </div>
+            <div className="p-8">
+              <p className="text-xs font-medium text-gold uppercase tracking-wider mb-4">Revert stories</p>
+              <blockquote className="text-[22px] font-light text-ink leading-snug mb-4">
+                &ldquo;Whoever accepts Islam will have what came before forgiven.&rdquo;
+              </blockquote>
+              <p className="text-sm text-muted mb-6">
+                — Sahih Muslim 121 &nbsp;·&nbsp; The Prophet ﷺ assured us that embracing Islam wipes the slate clean.
+                Every revert begins a new chapter — free from the past, filled with hope and purpose.
+                Read the stories of those who found their way to Islam right here in Bournemouth.
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gold group-hover:text-copper transition-colors duration-150">
+                Read their stories
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </Link>
         </Container>
       </section>
 
