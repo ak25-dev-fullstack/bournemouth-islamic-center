@@ -1,4 +1,7 @@
 import { NewsPost } from "@/types";
+import insideImg from "@/assets/inside.jpg";
+import istockImg from "@/assets/istockphoto-1999641401-612x612.jpg";
+import outsideImg from "@/assets/outside.jpg";
 
 export const newsPosts: NewsPost[] = [
   {
@@ -11,6 +14,7 @@ export const newsPosts: NewsPost[] = [
     date: "2025-02-20",
     author: "BIC Admin",
     pinned: true,
+    image: insideImg,
   },
   {
     id: "2",
@@ -21,6 +25,7 @@ export const newsPosts: NewsPost[] = [
       "We are pleased to announce the launch of a new adult Islamic education programme covering Fiqh, Tajweed, and Arabic. Classes begin in April. Limited spaces available.",
     date: "2025-02-10",
     author: "Education Committee",
+    image: istockImg,
   },
   {
     id: "3",
@@ -31,6 +36,7 @@ export const newsPosts: NewsPost[] = [
       "Alhamdulillah, Phase 1 of our expansion has been completed. We are now preparing for Phase 2, which will add a dedicated sisters' prayer hall and ablution facilities.",
     date: "2025-01-28",
     author: "BIC Committee",
+    image: outsideImg,
   },
   {
     id: "4",

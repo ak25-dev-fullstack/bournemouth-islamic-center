@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Link from "next/link";
+
+import Container from "@/components/ui/Container";
 import VideoCard from "@/components/ui/VideoCard";
+
 import { revertVideos } from "@/data/videos";
 
 export const metadata: Metadata = {
-  title: "Revert Stories",
-  description:
-    "Watch and read the journeys of people who embraced Islam through Bournemouth Islamic Centre.",
+  title: "Revert stories",
+  description: "Watch and read the journeys of people who embraced Islam through Bournemouth Islamic Centre.",
 };
 
 export default function RevertsPage() {
@@ -14,25 +16,21 @@ export default function RevertsPage() {
   const rest = revertVideos.filter((v) => !v.featured);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950" />
-      <div aria-hidden="true" className="absolute -top-24 right-1/4 w-[400px] h-[400px] rounded-full bg-emerald-700/10 blur-3xl pointer-events-none" />
-      <div aria-hidden="true" className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-amber-500/8 blur-3xl pointer-events-none" />
+    <div className="bg-ivory min-h-screen">
+      {/* Page header */}
+      <div className="bg-white border-b border-ink/8 py-12">
+        <Container>
+          <p className="text-xs font-medium text-gold uppercase tracking-wider mb-3">Journeys to Islam</p>
+          <h1 className="text-[48px] text-ink">Revert stories</h1>
+          <p className="text-sm text-muted mt-3">Inspiring journeys to Islam from people in our community</p>
+        </Container>
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <SectionHeading
-          title="Revert Stories"
-          subtitle="Inspiring journeys to Islam from people in our community"
-          light
-        />
-
+      <Container className="py-16">
         {/* Featured story */}
         {featured && (
           <div className="mb-12">
-            <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wide mb-3">
-              Featured Story
-            </p>
+            <p className="text-xs font-medium text-gold uppercase tracking-wider mb-4">Featured story</p>
             <VideoCard video={featured} featured />
           </div>
         )}
@@ -44,22 +42,22 @@ export default function RevertsPage() {
           ))}
         </div>
 
-        {/* Submit your story CTA */}
-        <div className="bg-gradient-to-br from-emerald-900 to-emerald-950 border border-emerald-700/30 rounded-2xl p-10 text-center">
-          <h2 className="text-2xl font-bold text-white mb-3">Share Your Journey</h2>
-          <p className="text-emerald-300 text-sm max-w-lg mx-auto mb-6">
-            Have you recently embraced Islam or are you considering it? We would
-            love to hear your story. Your experience can inspire and support
-            others on their own journey.
+        {/* Share your story CTA */}
+        <div className="bg-ink text-white rounded-lg px-8 py-12 text-center">
+          <p className="text-xs font-medium text-gold uppercase tracking-wider mb-4">Share your journey</p>
+          <h2 className="text-[36px] text-white mb-4">Share your story</h2>
+          <p className="text-white/55 text-sm max-w-md mx-auto mb-8 leading-relaxed">
+            Have you recently embraced Islam or are you considering it? We would love to hear your
+            story. Your experience can inspire and support others on their own journey.
           </p>
-          <a
+          <Link
             href="/contact"
-            className="inline-flex px-6 py-2.5 rounded-full bg-amber-500 text-white text-sm font-semibold hover:bg-amber-400 transition-colors"
+            className="inline-flex px-6 py-3 rounded text-sm font-medium bg-gold text-ink hover:opacity-88 transition-opacity duration-150"
           >
-            Get in Touch
-          </a>
+            Get in touch
+          </Link>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

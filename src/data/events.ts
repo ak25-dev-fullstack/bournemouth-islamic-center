@@ -96,4 +96,17 @@ export const events: Event[] = [
     registrationRequired: true,
     category: "special",
   },
+  {
+    id: "8",
+    title: "Eid al Adha prayer 2026",
+    description:
+      "Alhamdulillah — we gathered at Merrick Park for the Eid al Adha prayer as a community. The prayer began at 8:00am and was followed by the khutbah. Takbirs filled the park as thousands joined together to mark one of the most blessed days in the Islamic calendar.",
+    date: "2026-06-07",
+    time: "08:00",
+    audience: "All",
+    location: "Merrick Park, Bournemouth",
+    registrationRequired: false,
+    category: "past",
+    youtubeId: "hlU9VoFDc54",
+  },
 ];

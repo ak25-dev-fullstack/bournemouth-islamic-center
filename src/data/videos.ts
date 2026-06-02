@@ -1,4 +1,5 @@
 import { RevertVideo } from "@/types";
+import revertStoryImg from "@/assets/revert-story.jpg";
 
 export const revertVideos: RevertVideo[] = [
   {
@@ -8,6 +9,7 @@ export const revertVideos: RevertVideo[] = [
     excerpt:
       "Originally from Bournemouth, Sarah spent years searching for meaning and spiritual grounding. After attending an open day at BIC, she found answers to questions she had carried since childhood.",
     youtubeId: "dQw4w9WgXcQ",
+    image: revertStoryImg,
     date: "2024-11-15",
     featured: true,
   },

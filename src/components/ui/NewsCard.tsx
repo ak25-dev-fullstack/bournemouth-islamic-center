@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NewsPost } from "@/types";
 
 interface NewsCardProps {
@@ -6,10 +7,10 @@ interface NewsCardProps {
   featured?: boolean;
 }
 
-const categoryColors: Record<NewsPost["category"], string> = {
-  announcement: "bg-amber-900/40 text-amber-300 border border-amber-700/30",
-  community: "bg-emerald-900/40 text-emerald-300 border border-emerald-700/30",
-  event: "bg-blue-900/40 text-blue-300 border border-blue-700/30",
+const categoryStyles: Record<NewsPost["category"], string> = {
+  announcement: "bg-gold/10 text-copper",
+  community: "bg-mosque/10 text-mosque",
+  event: "bg-info/10 text-info",
 };
 
 const categoryLabels: Record<NewsPost["category"], string> = {
@@ -27,61 +28,52 @@ export default function NewsCard({ post, featured = false }: NewsCardProps) {
 
   return (
     <article
-      className={`bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm overflow-hidden hover:shadow-xl hover:bg-white/8 hover:-translate-y-1 transition-all duration-300 group ${
-        post.pinned ? "ring-2 ring-amber-500/50" : ""
-      } ${featured ? "flex flex-col sm:flex-row" : "flex flex-col"}`}
+      className={`bg-white border border-ink/8 rounded-lg overflow-hidden flex flex-col hover:border-gold/40 transition-colors duration-150 group ${
+        featured ? "sm:flex-row" : ""
+      } ${post.pinned ? "ring-1 ring-gold/30" : ""}`}
     >
-      {/* Placeholder image area */}
-      <div
-        className={`bg-gradient-to-br from-emerald-900/40 to-stone-900 flex items-center justify-center flex-shrink-0 ${
-          featured ? "sm:w-64 h-48 sm:h-auto" : "h-44"
-        }`}
-      >
-        <svg
-          className="w-12 h-12 text-emerald-700/50"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M12 2C9 2 6.5 4.5 6.5 7.5c0 1.8.9 3.4 2.2 4.4L12 22l3.3-10.1c1.3-1 2.2-2.6 2.2-4.4C17.5 4.5 15 2 12 2z" />
-        </svg>
-      </div>
+      {post.image ? (
+        <div className={`relative overflow-hidden flex-shrink-0 ${featured ? "sm:w-64 h-48 sm:h-auto" : "h-44"}`}>
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes={featured ? "(min-width: 640px) 256px, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
+            className="object-cover object-center"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div className={`bg-surface flex items-center justify-center flex-shrink-0 ${featured ? "sm:w-64 h-48 sm:h-auto" : "h-44"}`}>
+          <svg className="w-10 h-10 text-gold/30" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+          </svg>
+        </div>
+      )}
 
-      <div className="p-5 flex flex-col flex-grow">
+      <div className="p-6 flex flex-col flex-grow">
         <div className="flex items-center gap-2 mb-3">
           {post.pinned && (
-            <span className="text-xs font-semibold text-amber-300 bg-amber-900/40 border border-amber-700/30 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-medium text-gold bg-gold/10 px-2 py-0.5 rounded">
               Pinned
             </span>
           )}
-          <span
-            className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-              categoryColors[post.category]
-            }`}
-          >
+          <span className={`text-xs font-medium px-2 py-0.5 rounded ${categoryStyles[post.category]}`}>
             {categoryLabels[post.category]}
           </span>
         </div>
 
-        <h3
-          className={`font-bold text-white group-hover:text-emerald-400 transition-colors leading-snug mb-2 ${
-            featured ? "text-xl" : "text-base"
-          }`}
-        >
+        <h3 className={`text-ink group-hover:text-gold transition-colors duration-150 leading-snug mb-3 ${featured ? "text-[24px]" : "text-[20px]"}`}>
           <Link href={`/news/${post.slug}`}>{post.title}</Link>
         </h3>
 
-        <p className="text-stone-400 text-sm leading-relaxed flex-grow">
+        <p className="text-sm text-muted leading-relaxed flex-grow">
           {post.excerpt}
         </p>
 
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/10">
-          <time className="text-xs text-stone-500" dateTime={post.date}>
-            {formattedDate}
-          </time>
-          {post.author && (
-            <span className="text-xs text-stone-500">{post.author}</span>
-          )}
+        <div className="flex items-center justify-between mt-5 pt-4 border-t border-ink/8">
+          <time className="text-xs text-muted" dateTime={post.date}>{formattedDate}</time>
+          {post.author && <span className="text-xs text-muted">{post.author}</span>}
         </div>
       </div>
     </article>

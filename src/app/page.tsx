@@ -1,40 +1,31 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
-import logoTransparent from "@/assets/Logo_transparent.png";
+import Link from "next/link";
+
 import heroBg from "@/assets/background.png";
-import bluecoolImg from "@/assets/bluecool.webp";
-import abstractImg from "@/assets/islamic-design-greeting-card-background_1024307-3446.avif";
-import SectionHeading from "@/components/ui/SectionHeading";
-import NewsCard from "@/components/ui/NewsCard";
+import geoTexture from "@/assets/geo-texture.jpg";
+
+import Container from "@/components/ui/Container";
+import DonationCTAStrip from "@/components/ui/DonationCTAStrip";
 import EventCard from "@/components/ui/EventCard";
+import NewsCard from "@/components/ui/NewsCard";
+import SectionHeading from "@/components/ui/SectionHeading";
 import VideoCard from "@/components/ui/VideoCard";
-import ProjectCard from "@/components/ui/ProjectCard";
-import PrayerTimesWidget from "@/components/ui/PrayerTimesWidget";
-import QuickLinksGrid from "@/components/ui/QuickLinksGrid";
-import { DonationCTAStrip } from "@/components/ui/DonatePanel";
-import { newsPosts } from "@/data/news";
+import PrayerTimesWidget from "@/components/home/PrayerTimesWidget";
+import QuickLinksGrid from "@/components/home/QuickLinksGrid";
+
 import { events } from "@/data/events";
+import { newsPosts } from "@/data/news";
 import { revertVideos } from "@/data/videos";
-import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Bournemouth Islamic Centre & Central Mosque",
-  description:
-    "Your home for worship, community, and learning in Bournemouth. Prayer times, events, news, and more.",
+  description: "Your home for worship, community, and learning in Bournemouth. Prayer times, events, news, and more.",
 };
 
-function Container({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+function GoldDivider() {
   return (
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
-      {children}
-    </div>
+    <div className="h-px w-[120px] mx-auto bg-gold/30 my-2" aria-hidden="true" />
   );
 }
 
@@ -42,13 +33,11 @@ export default function HomePage() {
   const latestNews = newsPosts.slice(0, 3);
   const upcomingEvents = events.slice(0, 3);
   const featuredVideo = revertVideos.find((v) => v.featured) ?? revertVideos[0];
-  const activeProjects = projects.filter((p) => p.status !== "completed").slice(0, 3);
 
   return (
     <>
       {/* ── Hero ── */}
       <section className="relative text-white overflow-hidden min-h-[88vh] flex items-center">
-        {/* Background mosque photo */}
         <Image
           src={heroBg}
           alt=""
@@ -57,126 +46,106 @@ export default function HomePage() {
           priority
           className="object-cover object-center"
         />
-        {/* Main dark gradient */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/25"
-        />
+        {/* Gradient: dark left → transparent right */}
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-ink/88 via-ink/60 to-ink/15" />
 
         <Container className="relative py-24 w-full">
-          <div className="max-w-2xl">
-            <Image
-              src={logoTransparent}
-              alt="Bournemouth Islamic Centre"
-              width={200}
-              height={100}
-              className="mb-7 brightness-0 invert opacity-90"
-            />
-            <p className="text-emerald-400 text-sm font-semibold uppercase tracking-widest mb-3">
+          <div className="max-w-xl">
+            <p className="text-xs font-medium text-gold uppercase tracking-wider mb-5">
               Welcome to
             </p>
-            <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-5 tracking-tight">
+            <h1 className="text-[52px] sm:text-[64px] leading-[1.1] font-light text-white mb-6">
               Bournemouth Islamic Centre &amp; Central Mosque
             </h1>
-            <p className="text-stone-300 text-lg leading-relaxed mb-10 max-w-lg">
-              A welcoming home for worship, community, and learning in the heart
-              of Bournemouth. All are welcome.
+            <GoldDivider />
+            <p className="text-white/65 text-lg leading-relaxed mt-6 mb-10">
+              A welcoming home for worship, community, and learning in the heart of Bournemouth.
+              All are welcome.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="#prayer-times"
-                className="px-6 py-3 rounded-full bg-white text-emerald-900 font-bold text-sm hover:bg-emerald-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+                className="px-6 py-3 rounded text-sm font-medium bg-gold text-ink hover:opacity-88 transition-opacity duration-150"
               >
-                Prayer Times
+                Prayer times
               </Link>
               <Link
                 href="/donate"
-                className="px-6 py-3 rounded-full bg-amber-500 text-white font-bold text-sm hover:bg-amber-400 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+                className="px-6 py-3 rounded text-sm font-medium bg-white/10 text-white border border-white/25 hover:bg-white/20 transition-colors duration-150"
               >
                 Donate
               </Link>
               <Link
                 href="/events"
-                className="px-6 py-3 rounded-full border border-white/40 text-white font-bold text-sm hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+                className="px-6 py-3 rounded text-sm font-medium text-white/70 border border-white/15 hover:text-white hover:border-white/30 transition-colors duration-150"
               >
                 Events
               </Link>
             </div>
           </div>
         </Container>
+
       </section>
 
-      {/* ── Prayer Times ── */}
-      <section className="relative py-16 overflow-hidden">
-        {/* Dark gradient background */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-stone-950 via-emerald-950 to-stone-950"
-        />
-        {/* Abstract pattern texture */}
-        <div aria-hidden="true" className="absolute inset-0 opacity-[0.06]">
-          <Image src={abstractImg} alt="" fill sizes="100vw" className="object-cover" />
-        </div>
-        {/* Glow orbs */}
-        <div
-          aria-hidden="true"
-          className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"
-        />
-        <Container className="relative">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* ── Prayer Times ── dark band bridges hero → light body */}
+      <section className="py-24 bg-ink" id="prayer-times-section">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-1">
               <PrayerTimesWidget />
             </div>
-            <div className="lg:col-span-2 flex flex-col justify-center text-white">
-              <h2 className="text-3xl font-bold mb-2">Today at the Mosque</h2>
-              <p className="text-stone-400 text-sm mb-8">
-                Bournemouth Islamic Centre is open daily for all five daily
-                prayers. Our doors are open to all Muslims and those who wish to
+            <div className="lg:col-span-2 flex flex-col justify-center">
+              <h2 className="text-[40px] text-white mb-3">
+                Today at the mosque
+              </h2>
+              <p className="text-sm text-white/55 mb-8 leading-relaxed max-w-prose">
+                Open daily for all five prayers. Our doors are open to all Muslims and those who wish to
                 learn more about Islam.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   {
-                    title: "Jummah Prayer",
-                    detail: "Every Friday at 1:30pm. Khutbah from 1:00pm.",
-                    icon: "🕌",
+                    title: "Jummah prayer",
+                    detail: "Fridays · Khutbah 13:00",
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    ),
                   },
                   {
-                    title: "Weekend School",
-                    detail: "Saturdays 9am–12pm for children aged 5–16.",
-                    icon: "📚",
+                    title: "Weekend school",
+                    detail: "Sat 9am–12pm · ages 5–16",
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    ),
                   },
                   {
-                    title: "Sisters' Space",
-                    detail:
-                      "Dedicated prayer area and weekly halaqa on Wednesdays.",
-                    icon: "🌸",
+                    title: "Sisters' space",
+                    detail: "Weekly halaqa Wednesdays",
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                    ),
                   },
                   {
-                    title: "Open to All",
-                    detail:
-                      "Visitors, new Muslims, and those curious about Islam always welcome.",
-                    icon: "🤝",
+                    title: "Open to all",
+                    detail: "Visitors always welcome",
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    ),
                   },
                 ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="flex gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-200"
-                  >
-                    <span className="text-2xl flex-shrink-0" aria-hidden="true">
-                      {item.icon}
-                    </span>
+                  <div key={item.title} className="flex gap-4 p-4 bg-white/5 border border-white/8 rounded-lg">
+                    <div className="flex-shrink-0 text-gold mt-0.5">{item.icon}</div>
                     <div>
-                      <p className="text-sm font-semibold text-white">
-                        {item.title}
-                      </p>
-                      <p className="text-xs text-stone-400 mt-0.5">
-                        {item.detail}
-                      </p>
+                      <p className="text-sm font-medium text-white">{item.title}</p>
+                      <p className="text-xs text-white/50 mt-0.5">{item.detail}</p>
                     </div>
                   </div>
                 ))}
@@ -187,38 +156,29 @@ export default function HomePage() {
       </section>
 
       {/* ── Quick Navigation ── */}
-      <section className="relative py-16 overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-950 to-stone-900" />
-        <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-emerald-700/10 blur-3xl pointer-events-none" />
+      <section className="py-24 bg-ivory relative overflow-hidden">
+        {/* Subtle geometric texture */}
+        <div aria-hidden="true" className="absolute inset-0 opacity-[0.03]">
+          <Image src={geoTexture} alt="" fill sizes="100vw" className="object-cover" />
+        </div>
         <Container className="relative">
           <SectionHeading
-            title="Explore the Centre"
+            title="Explore the centre"
             subtitle="Everything you need in one place"
-            light
           />
           <QuickLinksGrid />
         </Container>
       </section>
 
       {/* ── Latest News ── */}
-      <section className="relative py-16 overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 bg-stone-950" />
-        <div aria-hidden="true" className="absolute inset-0 opacity-[0.12]">
-          <Image src={bluecoolImg} alt="" fill sizes="100vw" className="object-cover object-center" />
-        </div>
-        <div aria-hidden="true" className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-blue-500/8 blur-3xl pointer-events-none" />
-        <div aria-hidden="true" className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-emerald-600/8 blur-3xl pointer-events-none" />
-        <Container className="relative">
+      <section className="py-24 bg-surface">
+        <Container>
           <SectionHeading
-            title="Latest News"
+            title="Latest news"
             subtitle="Announcements and community updates"
-            light
             action={
-              <Link
-                href="/news"
-                className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
-              >
-                All news &rarr;
+              <Link href="/news" className="text-sm font-medium text-gold hover:text-copper transition-colors duration-150">
+                All news →
               </Link>
             }
           />
@@ -231,32 +191,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Upcoming Events ── */}
-      <section className="relative py-16 overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-stone-900 to-stone-950"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute -top-24 right-0 w-80 h-80 rounded-full bg-emerald-700/20 blur-3xl pointer-events-none"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-1/3 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"
-        />
-        <Container className="relative">
+      <section className="py-24 bg-white">
+        <Container>
           <SectionHeading
-            title="Events & Activities"
+            title="Events & activities"
             subtitle="What's on this week and beyond"
             action={
-              <Link
-                href="/events"
-                className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
-              >
-                Full calendar &rarr;
+              <Link href="/events" className="text-sm font-medium text-gold hover:text-copper transition-colors duration-150">
+                Full calendar →
               </Link>
             }
-            light
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {upcomingEvents.map((event) => (
@@ -267,70 +211,24 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Revert Video ── */}
-      <section className="relative py-16 overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950" />
-        <div aria-hidden="true" className="absolute bottom-0 right-1/4 w-72 h-72 rounded-full bg-amber-500/8 blur-3xl pointer-events-none" />
-        <Container className="relative">
+      <section className="py-24 bg-ivory">
+        <Container>
           <SectionHeading
-            title="Revert Stories"
+            title="Revert stories"
             subtitle="Journeys to Islam from members of our community"
             action={
-              <Link
-                href="/reverts"
-                className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
-              >
-                More stories &rarr;
+              <Link href="/reverts" className="text-sm font-medium text-gold hover:text-copper transition-colors duration-150">
+                More stories →
               </Link>
             }
-            light
           />
           <VideoCard video={featuredVideo} featured />
         </Container>
       </section>
 
-      {/* ── Current Projects ── */}
-      <section className="relative py-16 overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-emerald-900 to-emerald-950"
-        />
-        <div aria-hidden="true" className="absolute inset-0 opacity-[0.06]">
-          <Image src={abstractImg} alt="" fill sizes="100vw" className="object-cover" />
-        </div>
-        <div
-          aria-hidden="true"
-          className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-amber-400/15 blur-3xl pointer-events-none"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-emerald-600/20 blur-3xl pointer-events-none"
-        />
-        <Container className="relative">
-          <SectionHeading
-            title="Current Projects"
-            subtitle="Help us build a better centre for the community"
-            action={
-              <Link
-                href="/projects"
-                className="text-sm font-semibold text-emerald-300 hover:text-white transition-colors"
-              >
-                All projects &rarr;
-              </Link>
-            }
-            light
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activeProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* ── Donation CTA ── */}
-      <section className="relative py-16 overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 bg-stone-950" />
-        <Container className="relative">
+      <section className="py-24 bg-white">
+        <Container>
           <DonationCTAStrip />
         </Container>
       </section>

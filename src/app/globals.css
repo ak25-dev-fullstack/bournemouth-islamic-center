@@ -1,33 +1,51 @@
 @import "tailwindcss";
 
-/* Class-based dark mode: .dark on <html> activates dark: variants */
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme inline {
-  --color-background: #f5f5f4;
-  --color-foreground: #1c1917;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Palette (DESIGN.md) ── */
+  --color-ivory:       #F8F6F0;
+  --color-ink:         #1A1916;
+  --color-gold:        #C9963A;
+  --color-copper:      #A0714F;
+  --color-muted:       #8C8880;
+  --color-surface:     #EFEDE6;
+  --color-mosque:      #0F6E56;
+  --color-mosque-deep: #0A4F3E;
+  --color-success:     #3B6D11;
+  --color-warning:     #BA7517;
+  --color-danger:      #A32D2D;
+  --color-info:        #185FA5;
+
+  /* ── Fonts ── */
+  --font-sans:    var(--font-inter);
+  --font-heading: var(--font-cormorant);
+  --font-mono:    var(--font-jetbrains);
 }
 
-:root {
-  --background: #f5f5f4;
-  --foreground: #1c1917;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-}
-
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Line clamp utility */
+body {
+  background: #F8F6F0;
+  color: #1A1916;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+*:focus-visible {
+  outline: 2px solid #C9963A;
+  outline-offset: 2px;
+}
+
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -40,10 +58,4 @@ html {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-/* Focus ring */
-*:focus-visible {
-  outline: 2px solid #059669;
-  outline-offset: 2px;
 }

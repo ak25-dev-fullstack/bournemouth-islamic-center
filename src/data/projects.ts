@@ -1,4 +1,7 @@
 import { Project } from "@/types";
+import interiorSoftImg from "@/assets/interior-soft.jpg";
+import khutbahImg from "@/assets/khutbah.jpg";
+import imamImg from "@/assets/imam.jpg";
 
 export const projects: Project[] = [
   {
@@ -10,6 +13,7 @@ export const projects: Project[] = [
     fundingGoal: 120000,
     fundingRaised: 87400,
     cta: "Support This Project",
+    image: interiorSoftImg,
   },
   {
     id: "2",
@@ -20,6 +24,7 @@ export const projects: Project[] = [
     fundingGoal: 200000,
     fundingRaised: 32000,
     cta: "Donate to This Project",
+    image: khutbahImg,
   },
   {
     id: "3",
@@ -30,6 +35,7 @@ export const projects: Project[] = [
     fundingGoal: 24000,
     fundingRaised: 18600,
     cta: "Donate or Volunteer",
+    image: imamImg,
   },
   {
     id: "4",

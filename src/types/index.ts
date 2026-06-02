@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export interface NewsPost {
   id: string;
   title: string;
@@ -6,7 +8,7 @@ export interface NewsPost {
   excerpt: string;
   date: string;
   author?: string;
-  image?: string;
+  image?: StaticImageData;
   pinned?: boolean;
 }
 
@@ -22,7 +24,8 @@ export interface Event {
   recurring?: boolean;
   recurringLabel?: string;
   registrationRequired?: boolean;
-  category: "weekly" | "special" | "youth" | "sisters";
+  category: "weekly" | "special" | "youth" | "sisters" | "past";
+  youtubeId?: string;
 }
 
 export interface RevertVideo {
@@ -31,7 +34,7 @@ export interface RevertVideo {
   person: string;
   excerpt: string;
   youtubeId: string;
-  thumbnail?: string;
+  image?: StaticImageData;
   date: string;
   featured?: boolean;
 }
@@ -43,7 +46,7 @@ export interface Project {
   status: "active" | "completed" | "planning";
   fundingGoal?: number;
   fundingRaised?: number;
-  image?: string;
+  image?: StaticImageData;
   cta?: string;
   completed?: boolean;
   completedYear?: string;
