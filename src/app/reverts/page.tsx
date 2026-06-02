@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 
 export default function RevertsPage() {
   const featured = revertVideos.find((v) => v.featured);
-  const rest = revertVideos.filter((v) => !v.featured);
 
   return (
     <div className="bg-ivory min-h-screen">
@@ -27,6 +26,13 @@ export default function RevertsPage() {
       </div>
 
       <Container className="py-16">
+        {/* Disclaimer */}
+        <div className="mb-10 px-5 py-4 rounded-lg border border-gold/30 bg-gold/5">
+          <p className="text-sm text-muted leading-relaxed">
+            <span className="font-medium text-ink">This is a new section</span> — we are just getting started and will be adding more stories over time. Check back soon.
+          </p>
+        </div>
+
         {/* Featured story */}
         {featured && (
           <div className="mb-12">
@@ -34,13 +40,6 @@ export default function RevertsPage() {
             <VideoCard video={featured} featured />
           </div>
         )}
-
-        {/* Story grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-14">
-          {rest.map((video) => (
-            <VideoCard key={video.id} video={video} />
-          ))}
-        </div>
 
         {/* Share your story CTA */}
         <div className="bg-ink text-white rounded-lg px-8 py-12 text-center">
