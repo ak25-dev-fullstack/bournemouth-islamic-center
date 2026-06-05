@@ -204,6 +204,20 @@ export default function PrayerTimesClient({ allTimes }: Props) {
           </p>
         </div>
       )}
+
+      {/* Download */}
+      <div className="px-6 py-4 border-t border-white/10">
+        <a
+          href="/bournemouth-islamic-center/prayer-times-2026.pdf"
+          download
+          className="flex items-center justify-center gap-2 w-full py-2.5 rounded text-sm font-medium text-white/70 border border-white/20 hover:text-white hover:border-white/40 transition-colors duration-150"
+        >
+          <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download prayer timetable
+        </a>
+      </div>
     </section>
   );
 }
