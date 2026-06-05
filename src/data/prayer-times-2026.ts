@@ -55,3 +55,7 @@ export function getTodaysPrayerTimes(): DayPrayerTimes | null {
   const today = new Date().toLocaleDateString("en-CA");
   return prayerTimes2026.find((d) => d.date === today) ?? null;
 }
+
+export function getAllPrayerTimes(): DayPrayerTimes[] {
+  return prayerTimes2026;
+}

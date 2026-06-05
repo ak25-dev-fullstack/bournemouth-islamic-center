@@ -1,5 +1,5 @@
 export const jummahInfo = {
-  khutbah: "13:00",
-  prayer: "13:30",
-  note: "Please arrive by 12:45 to ensure a space.",
+  khutbahEnglish: "13:10",
+  khutbah: "13:30",
+  prayer: "13:50",
 };

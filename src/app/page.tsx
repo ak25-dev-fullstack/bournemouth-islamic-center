@@ -43,7 +43,7 @@ export default function HomePage() {
           aria-hidden="true"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-[20%_center] sm:object-center"
         />
         {/* Gradient: dark left → transparent right */}
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-ink/88 via-ink/60 to-ink/15" />

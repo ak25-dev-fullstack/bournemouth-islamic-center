@@ -103,6 +103,20 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden border-t border-gold/20 bg-white px-5 pb-5 pt-3">
           <nav className="flex flex-col gap-0.5" aria-label="Mobile navigation">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2.5 text-sm text-ink/70 hover:text-ink hover:bg-ivory rounded transition-colors duration-150"
+            >
+              Home
+            </Link>
+            <Link
+              href="/#prayer-times"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2.5 text-sm text-ink/70 hover:text-ink hover:bg-ivory rounded transition-colors duration-150"
+            >
+              Prayer times
+            </Link>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
