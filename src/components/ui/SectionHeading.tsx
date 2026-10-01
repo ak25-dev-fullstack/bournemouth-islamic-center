@@ -34,14 +34,14 @@ export default function SectionHeading({
       <div className={`flex flex-col ${align === "center" ? "items-center" : ""}`}>
         <GoldOrnament />
         <h2
-          className={`text-[36px] leading-[1.2] ${
+          className={`text-[clamp(1.875rem,5vw,2.25rem)] leading-[1.2] ${
             light ? "text-white" : "text-ink"
           } ${centerClass}`}
         >
           {title}
         </h2>
         {subtitle && (
-          <p className={`mt-2 text-sm leading-relaxed ${light ? "text-white/55" : "text-muted"}`}>
+          <p className={`mt-2 text-lg leading-relaxed ${light ? "text-white/85" : "text-muted"}`}>
             {subtitle}
           </p>
         )}

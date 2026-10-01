@@ -17,11 +17,11 @@ export default function RevertsPage() {
   return (
     <div className="bg-ivory min-h-screen">
       {/* Page header */}
-      <div className="bg-white border-b border-ink/8 py-12">
+      <div className="bg-white border-b border-ink/10 py-12">
         <Container>
-          <p className="text-xs font-medium text-gold uppercase tracking-wider mb-3">Journeys to Islam</p>
-          <h1 className="text-[48px] text-ink">Revert stories</h1>
-          <p className="text-sm text-muted mt-3">Inspiring journeys to Islam from people in our community</p>
+          <p className="text-sm font-semibold text-mosque mb-3">Journeys to Islam</p>
+          <h1 className="text-[clamp(2.25rem,6vw,3rem)] text-ink">Revert stories</h1>
+          <p className="text-lg text-muted mt-3">Inspiring journeys to Islam from people in our community</p>
         </Container>
       </div>
 
@@ -36,22 +36,22 @@ export default function RevertsPage() {
         {/* Featured story */}
         {featured && (
           <div className="mb-12">
-            <p className="text-xs font-medium text-gold uppercase tracking-wider mb-4">Featured story</p>
+            <p className="text-sm font-semibold text-mosque mb-4">Featured story</p>
             <VideoCard video={featured} featured />
           </div>
         )}
 
         {/* Share your story CTA */}
         <div className="bg-ink text-white rounded-lg px-8 py-12 text-center">
-          <p className="text-xs font-medium text-gold uppercase tracking-wider mb-4">Share your journey</p>
-          <h2 className="text-[36px] text-white mb-4">Share your story</h2>
-          <p className="text-white/55 text-sm max-w-md mx-auto mb-8 leading-relaxed">
+          <p className="text-sm font-semibold text-gold-light mb-4">Share your journey</p>
+          <h2 className="text-[clamp(1.875rem,5vw,2.25rem)] text-white mb-4">Share your story</h2>
+          <p className="text-white/85 text-sm max-w-md mx-auto mb-8 leading-relaxed">
             Have you recently embraced Islam or are you considering it? We would love to hear your
             story. Your experience can inspire and support others on their own journey.
           </p>
           <Link
             href="/contact"
-            className="inline-flex px-6 py-3 rounded text-sm font-medium bg-gold text-ink hover:opacity-88 transition-opacity duration-150"
+            className="inline-flex items-center min-h-12 px-7 rounded text-lg font-semibold bg-gold text-ink hover:opacity-90 transition-opacity duration-150"
           >
             Get in touch
           </Link>

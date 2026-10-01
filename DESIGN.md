@@ -24,9 +24,12 @@ This project's visual language draws from Islamic geometric tradition — precis
 
 | Name       | Hex       | Use                                 |
 |------------|-----------|-------------------------------------|
-| Gold       | `#C9963A` | Highlights, icons, decorative lines |
-| Copper     | `#A0714F` | Hover states, secondary accent      |
-| Stone      | `#8C8880` | Muted text, borders, dividers       |
+| Mosque green | `#0F6E56` | Text accent: links, labels, icons; prayer-times band, footer |
+| Mosque deep  | `#0A4F3E` | Link hover, text on surface cards   |
+| Gold       | `#C9963A` | Buttons (with Ink text) & decoration only — **never text on light backgrounds** |
+| Gold light | `#F3DCA8` | Gold-toned text on dark / green backgrounds |
+| Copper     | `#8A5A38` | Badges, secondary accent text       |
+| Muted      | `#5A564F` | Secondary text (7.3:1 on white)     |
 
 ### Semantic
 
@@ -44,7 +47,7 @@ This project's visual language draws from Islamic geometric tradition — precis
 ### Typefaces
 
 ```
-Heading:  Cormorant Garamond  (serif, elegant, classical weight)
+Heading:  Lora                (serif, sturdy, screen-legible; weight 500)
 Body:     Inter               (sans-serif, clean, readable)
 Mono:     JetBrains Mono      (code blocks)
 ```
@@ -53,17 +56,22 @@ Mono:     JetBrains Mono      (code blocks)
 
 | Token    | Size  | Weight | Line Height | Use                  |
 |----------|-------|--------|-------------|----------------------|
-| `--h1`   | 48px  | 400    | 1.15        | Hero headings        |
-| `--h2`   | 36px  | 400    | 1.2         | Section headings     |
-| `--h3`   | 24px  | 500    | 1.3         | Card titles          |
-| `--h4`   | 18px  | 500    | 1.4         | Sub-headings         |
-| `--body` | 16px  | 400    | 1.7         | Body copy            |
-| `--sm`   | 14px  | 400    | 1.6         | Captions, meta       |
-| `--xs`   | 12px  | 400    | 1.5         | Labels, fine print   |
+The site is designed to be comfortable for elderly visitors. All sizes are in `rem`
+so they grow with the visitor's own browser/phone text-size setting.
+
+| Token / class | Size  | Weight | Use                                   |
+|---------------|-------|--------|---------------------------------------|
+| h1            | clamp(36px → 64px) | 500 | Hero / page headings    |
+| h2            | clamp(30px → 36px) | 500 | Section headings        |
+| h3            | 20–28px | 500  | Card titles                           |
+| `text-sm` / `text-base` | 18px | 400 | Body copy (default)          |
+| `text-lg`     | 20px  | 400–600 | Lead text, buttons, nav           |
+| `text-xs`     | 16px  | 400–600 | Badges, meta — **the minimum size** |
 
 ### Rules
 
-- Headings in sentence case always — never all caps
+- Headings in sentence case always — never all caps (labels too: no uppercase + letter-spacing)
+- Never go below 16px for any text
 - Body text maximum line length: 68 characters (approx. 640px)
 - No bold mid-sentence; bold is for headings and labels only
 - Avoid orphans on hero text — adjust line breaks manually
@@ -110,8 +118,8 @@ Margin (mobile):    20px
 
 ```
 mobile:   < 640px
-tablet:   640px – 1024px
-desktop:  > 1024px
+tablet:   640px – 1024px   (header uses the Menu button up to 1024px)
+desktop:  ≥ 1024px         (full navigation bar incl. Home link)
 ```
 
 ---
@@ -122,12 +130,12 @@ desktop:  > 1024px
 
 ```
 Primary:    bg Gold (#C9963A), text Ink, no border
-Secondary:  bg transparent, border 1px Stone, text Ink
-Ghost:      bg transparent, no border, text Gold
+Secondary:  bg transparent, border 2px, text Ink (or white on dark)
+Text link:  Mosque green, semibold, always underlined
 Danger:     bg Error (#A32D2D), text white
 ```
 
-All buttons: `border-radius: 4px`, `padding: 10px 24px`, `font-size: 14px`, `font-weight: 500`
+All buttons: `border-radius: 4px`, min-height 48px, `font-size: 20px`, `font-weight: 600`
 Hover: opacity 0.88 transition (120ms ease)
 No drop shadows on buttons.
 
@@ -147,13 +155,13 @@ On hover (interactive cards): border-color transitions to Gold at 0.4 opacity.
 
 ```
 background:    #FFFFFF
-border:        1px solid #8C8880
+border:        2px solid #5A564F
 border-radius: 4px
-padding:       10px 14px
-font-size:     16px
+min-height:    48px
+font-size:     20px   (≥16px prevents iOS zoom-on-focus)
 ```
 
-Focus: border-color Gold, no glow/ring.
+Focus: border-color Mosque green + soft green ring.
 Error: border-color `#A32D2D`.
 Placeholder: Stone `#8C8880`.
 
@@ -259,9 +267,11 @@ minimalist, editorial, high resolution
 ## Accessibility
 
 - Minimum contrast ratio: 4.5:1 for body text, 3:1 for large text
-- Gold `#C9963A` on White `#FFFFFF` = 2.8:1 — **use only for decorative elements or large text (18px+)**
+- Gold `#C9963A` on White `#FFFFFF` = 2.7:1 — **decoration and button backgrounds only, never text**
+- Mosque green on white 6.2:1 · Muted on white 7.3:1 · Gold light on green 4.6:1
 - Gold on Ink `#1A1916` = passes AAA
-- All interactive elements: visible focus state (Gold border outline, 2px offset)
+- All interactive elements: visible focus state (3px Gold outline, 3px offset)
+- Links are underlined, not distinguished by colour alone
 - Never convey information through color alone — pair with label or icon
 - Touch targets: minimum 44 × 44px
 
@@ -293,4 +303,4 @@ Components:   [ComponentName].tsx
 
 ---
 
-*Last updated: June 2026*
+*Last updated: October 2026*

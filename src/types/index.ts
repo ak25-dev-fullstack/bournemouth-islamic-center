@@ -1,15 +1,13 @@
 import type { StaticImageData } from "next/image";
 
-export interface NewsPost {
+export interface Notice {
   id: string;
   title: string;
-  slug: string;
-  category: "announcement" | "community" | "event";
-  excerpt: string;
+  message: string;
+  /** ISO date the notice was posted, e.g. "2026-10-01" */
   date: string;
-  author?: string;
-  image?: StaticImageData;
-  pinned?: boolean;
+  /** Optional link for more details */
+  link?: { label: string; href: string };
 }
 
 export interface Event {

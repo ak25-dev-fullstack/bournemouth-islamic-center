@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const { label, cls } = statusStyles[project.status];
 
   return (
-    <article className="bg-white border border-ink/8 rounded-lg overflow-hidden flex flex-col hover:border-gold/40 transition-colors duration-150 group">
+    <article className="bg-white border border-ink/10 rounded-lg overflow-hidden flex flex-col hover:border-gold/40 transition-colors duration-150 group">
       {project.image && (
         <div className="relative h-44 flex-shrink-0">
           <Image
@@ -40,7 +40,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="p-6 flex flex-col flex-grow">
         <div className="flex items-start justify-between gap-3 mb-3">
-          <h3 className="text-[20px] text-ink leading-snug group-hover:text-gold transition-colors duration-150">
+          <h3 className="text-[1.25rem] text-ink leading-snug group-hover:text-mosque transition-colors duration-150">
             {project.title}
           </h3>
           <span className={`text-xs font-medium px-2 py-0.5 rounded flex-shrink-0 ${cls}`}>
@@ -80,7 +80,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {project.cta && !project.completed && (
           <Link
             href="/donate"
-            className="mt-auto inline-flex items-center justify-center px-5 py-2.5 rounded text-sm font-medium bg-gold text-ink hover:opacity-88 transition-opacity duration-150"
+            className="mt-auto inline-flex items-center justify-center px-5 py-2.5 rounded text-sm font-medium bg-gold text-ink hover:opacity-90 transition-opacity duration-150"
           >
             {project.cta}
           </Link>

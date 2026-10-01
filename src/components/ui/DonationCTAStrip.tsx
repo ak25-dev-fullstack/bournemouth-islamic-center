@@ -14,19 +14,19 @@ export default function DonationCTAStrip() {
         className="object-cover opacity-[0.04] pointer-events-none select-none"
       />
       <div className="relative">
-        <p className="text-xs font-medium text-gold uppercase tracking-wider mb-4">
+        <p className="text-sm font-semibold text-gold-light mb-4">
           Support our community
         </p>
-        <h2 className="text-[36px] text-white mb-3">
+        <h2 className="text-[clamp(1.875rem,5vw,2.25rem)] text-white mb-3">
           Support Bournemouth Islamic Centre
         </h2>
-        <p className="text-white/55 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+        <p className="text-white/85 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
           Your generosity keeps our doors open, our programmes running, and our community
           thriving. Every contribution — large or small — makes a difference.
         </p>
         <Link
           href="/donate"
-          className="inline-flex items-center px-7 py-3 rounded text-sm font-medium bg-gold text-ink hover:opacity-88 transition-opacity duration-150"
+          className="inline-flex items-center min-h-12 px-7 rounded text-lg font-semibold bg-gold text-ink hover:opacity-90 transition-opacity duration-150"
         >
           Donate now
         </Link>

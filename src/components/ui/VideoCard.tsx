@@ -14,7 +14,7 @@ export default function VideoCard({ video, featured = false }: VideoCardProps) {
 
   return (
     <article
-      className={`bg-white border border-ink/8 rounded-lg overflow-hidden hover:border-gold/40 transition-colors duration-150 group ${
+      className={`bg-white border border-ink/10 rounded-lg overflow-hidden hover:border-gold/40 transition-colors duration-150 group ${
         featured ? "flex flex-col lg:flex-row" : "flex flex-col"
       }`}
     >
@@ -45,17 +45,17 @@ export default function VideoCard({ video, featured = false }: VideoCardProps) {
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <p className="text-xs font-medium text-gold uppercase tracking-wider mb-2">
+        <p className="text-sm font-semibold text-mosque mb-2">
           Revert story
         </p>
-        <h3 className={`text-ink leading-snug mb-2 group-hover:text-gold transition-colors duration-150 ${featured ? "text-[28px]" : "text-[20px]"}`}>
+        <h3 className={`text-ink leading-snug mb-2 group-hover:text-mosque transition-colors duration-150 ${featured ? "text-[1.75rem]" : "text-[1.25rem]"}`}>
           {video.title}
         </h3>
         <p className="text-sm font-medium text-muted mb-3">{video.person}</p>
         <p className="text-sm text-muted leading-relaxed flex-grow">
           {video.excerpt}
         </p>
-        <time className="mt-5 text-xs text-muted block" dateTime={video.date}>
+        <time className="mt-5 text-base text-muted block" dateTime={video.date}>
           {formattedDate}
         </time>
       </div>

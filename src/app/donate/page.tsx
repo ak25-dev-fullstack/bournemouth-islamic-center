@@ -23,11 +23,11 @@ export default function DonatePage() {
   return (
     <div className="bg-ivory min-h-screen">
       {/* Page header */}
-      <div className="bg-white border-b border-ink/8 py-12">
+      <div className="bg-white border-b border-ink/10 py-12">
         <Container>
-          <p className="text-xs font-medium text-gold uppercase tracking-wider mb-3">Give generously</p>
-          <h1 className="text-[48px] text-ink">Donate to BIC</h1>
-          <p className="text-sm text-muted mt-3 max-w-lg leading-relaxed">
+          <p className="text-sm font-semibold text-mosque mb-3">Give generously</p>
+          <h1 className="text-[clamp(2.25rem,6vw,3rem)] text-ink">Donate to BIC</h1>
+          <p className="text-lg text-muted mt-3 max-w-lg leading-relaxed">
             Your generosity sustains our mosque and community. Alhamdulillah — Bournemouth Islamic
             Centre has served our community for over 25 years.
           </p>
@@ -40,18 +40,18 @@ export default function DonatePage() {
           {trustCues.map((item) => (
             <div
               key={item.title}
-              className="bg-white border border-ink/8 rounded-lg p-5 hover:border-gold/30 transition-colors duration-150"
+              className="bg-white border border-ink/10 rounded-lg p-5 hover:border-gold/30 transition-colors duration-150"
             >
               <div className="w-2 h-2 rounded-full bg-gold mb-4" aria-hidden="true" />
-              <p className="text-sm font-medium text-ink mb-1">{item.title}</p>
-              <p className="text-xs text-muted leading-relaxed">{item.desc}</p>
+              <p className="text-lg font-semibold text-ink mb-1">{item.title}</p>
+              <p className="text-base text-muted leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Bank transfer */}
         <section aria-labelledby="bank-transfer-heading" className="mb-14">
-          <h2 id="bank-transfer-heading" className="text-[24px] text-ink mb-2">Bank transfer</h2>
+          <h2 id="bank-transfer-heading" className="text-[1.5rem] text-ink mb-2">Bank transfer</h2>
           <p className="text-sm text-muted mb-6 leading-relaxed">
             The easiest way to donate is by bank transfer. Use the account details below —
             click any field to copy it to your clipboard.
@@ -64,12 +64,12 @@ export default function DonatePage() {
         </section>
 
         {/* Where your money goes */}
-        <section className="bg-white border border-ink/8 rounded-lg p-8 mb-8 relative overflow-hidden" aria-labelledby="impact-heading">
+        <section className="bg-white border border-ink/10 rounded-lg p-8 mb-8 relative overflow-hidden" aria-labelledby="impact-heading">
           <div aria-hidden="true" className="absolute inset-0 opacity-[0.03]">
             <Image src={geoTexture} alt="" fill sizes="800px" className="object-cover" />
           </div>
           <div className="relative">
-            <h2 id="impact-heading" className="text-[24px] text-ink mb-6">Where your money goes</h2>
+            <h2 id="impact-heading" className="text-[1.5rem] text-ink mb-6">Where your money goes</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {[
                 { label: "Mosque operations", pct: 40, desc: "Utilities, maintenance, insurance, and cleaning." },
@@ -77,14 +77,14 @@ export default function DonatePage() {
                 { label: "Community welfare", pct: 25, desc: "Food bank, hardship support, revert services." },
               ].map((item) => (
                 <div key={item.label}>
-                  <div className="flex justify-between text-sm mb-2">
+                  <div className="flex justify-between gap-3 text-lg mb-2">
                     <span className="font-medium text-ink">{item.label}</span>
-                    <span className="text-gold font-medium">{item.pct}%</span>
+                    <span className="text-mosque font-semibold">{item.pct}%</span>
                   </div>
-                  <div className="h-1.5 bg-ink/8 rounded-full overflow-hidden">
+                  <div className="h-2.5 bg-ink/10 rounded-full overflow-hidden">
                     <div className="h-full bg-gold rounded-full" style={{ width: `${item.pct}%` }} />
                   </div>
-                  <p className="text-xs text-muted mt-2">{item.desc}</p>
+                  <p className="text-base text-muted mt-2">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -92,16 +92,16 @@ export default function DonatePage() {
         </section>
 
         {/* Regular giving */}
-        <div className="bg-white border border-ink/8 rounded-lg p-8 text-center">
-          <h3 className="text-[24px] text-ink mb-2">Set up a regular gift</h3>
+        <div className="bg-white border border-ink/10 rounded-lg p-8 text-center">
+          <h3 className="text-[1.5rem] text-ink mb-2">Set up a regular gift</h3>
           <p className="text-sm text-muted max-w-lg mx-auto mb-2 leading-relaxed">
             Regular giving — even a small monthly amount — allows us to plan ahead and serve the
             community more effectively. You can set up a standing order to our General Fund using
             the bank details above.
           </p>
-          <p className="text-xs text-muted mt-3">
+          <p className="text-base text-muted mt-3">
             For Gift Aid enquiries, please contact{" "}
-            <a href="mailto:bic.sendmessage@gmail.com" className="text-gold hover:text-copper transition-colors duration-150">
+            <a href="mailto:bic.sendmessage@gmail.com" className="font-semibold text-mosque underline underline-offset-4 decoration-2 hover:text-mosque-deep transition-colors duration-150">
               bic.sendmessage@gmail.com
             </a>
           </p>

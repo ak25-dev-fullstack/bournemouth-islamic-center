@@ -1,49 +1,81 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── Palette (DESIGN.md) ── */
+  /* ── Palette (DESIGN.md) ──
+     Text colours are chosen to meet WCAG AA (4.5:1) on ivory, white and surface. */
   --color-ivory:       #F8F6F0;
   --color-ink:         #1A1916;
-  --color-gold:        #C9963A;
-  --color-copper:      #A0714F;
-  --color-muted:       #8C8880;
+  --color-gold:        #C9963A; /* buttons & decoration only — never text on light bg */
+  --color-gold-light:  #F3DCA8; /* gold text on dark / green backgrounds */
+  --color-copper:      #8A5A38;
+  --color-muted:       #5A564F; /* secondary text — 7.3:1 on white */
   --color-surface:     #EFEDE6;
-  --color-mosque:      #0F6E56;
+  --color-mosque:      #0F6E56; /* text accent: links, labels, icons */
   --color-mosque-deep: #0A4F3E;
   --color-success:     #3B6D11;
   --color-warning:     #BA7517;
   --color-danger:      #A32D2D;
   --color-info:        #185FA5;
 
+  /* ── Type scale ──
+     Enlarged for readability: body copy is 18px, nothing falls below 16px.
+     All sizes are rem so they follow the visitor's browser text-size setting. */
+  --text-xs:   1rem;
+  --text-xs--line-height:   1.55;
+  --text-sm:   1.125rem;
+  --text-sm--line-height:   1.65;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.7;
+  --text-lg:   1.25rem;
+  --text-lg--line-height:   1.6;
+  --text-xl:   1.375rem;
+  --text-xl--line-height:   1.5;
+
   /* ── Fonts ── */
   --font-sans:    var(--font-inter);
-  --font-heading: var(--font-cormorant);
+  --font-heading: var(--font-lora);
   --font-mono:    var(--font-jetbrains);
 }
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchor targets clear of the fixed header */
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: #F8F6F0;
   color: #1A1916;
   font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 16px;
+  font-size: 1.125rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
-  font-weight: 400;
-  line-height: 1.2;
+  font-family: var(--font-lora), Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
 *:focus-visible {
-  outline: 2px solid #C9963A;
-  outline-offset: 2px;
+  outline: 3px solid #C9963A;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .line-clamp-2 {
