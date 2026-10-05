@@ -48,7 +48,7 @@ these rules (approved by the site owner, Oct 2026):
 ### Prayer times (`src/components/home/PrayerTimesClient.tsx`)
 - Mimics https://masjidbox.com/prayer-times/bournemouth-islamic-centre-and-central-mosque but in mosque green:
   date / current time / Hijri (English + Arabic) bar → title → large countdown ("The prayer of Asr is in
-  HH:MM:SS") → zig-zag edge → 3×2 card grid (2 columns on phones) with the next prayer filled green and a
+  HH:MM:SS") → zig-zag edge → 3×2 card grid (3 compact columns on phones too — whole section fits one phone screen) with the next prayer filled green and a
   "Next" badge → Jumu'ah bar → PDF download.
 - Full-width section directly under the home hero; "Today at the mosque" cards follow it.
 - Times are computed in **Europe/London** time regardless of the visitor's time zone; renders after mount (static

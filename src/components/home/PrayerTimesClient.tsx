@@ -90,11 +90,11 @@ function splitDuration(secs: number) {
 
 function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
-    <div className="flex flex-col items-center gap-2">
-      <span className="text-[clamp(3.25rem,13vw,6rem)] font-semibold leading-none tabular-nums tracking-tight">
+    <div className="flex flex-col items-center gap-1 sm:gap-2">
+      <span className="text-[clamp(2.75rem,11vw,5rem)] font-medium leading-none tabular-nums tracking-tight">
         {String(value).padStart(2, "0")}
       </span>
-      <span className="min-w-[5.5rem] sm:min-w-[7rem] rounded bg-white/15 px-3 py-1 text-base text-white">
+      <span className="min-w-[4.5rem] sm:min-w-[7rem] rounded-sm bg-white/10 px-2 sm:px-3 sm:py-0.5 text-xs sm:text-base text-white/90">
         {label}
       </span>
     </div>
@@ -103,7 +103,7 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
 
 function Colon() {
   return (
-    <span aria-hidden="true" className="text-[clamp(2rem,7vw,3.5rem)] font-semibold leading-none text-white/85 pb-12 sm:pb-14">
+    <span aria-hidden="true" className="text-[clamp(1.75rem,6vw,3rem)] font-light leading-none text-white/85">
       :
     </span>
   );
@@ -174,47 +174,48 @@ export default function PrayerTimesClient({ allTimes }: Props) {
   const remaining = next ? splitDuration(next.secsLeft) : null;
 
   return (
-    <section id="prayer-times" aria-labelledby="prayer-times-heading">
+    <section id="prayer-times" aria-labelledby="prayer-times-heading" className="flex flex-col min-h-svh">
       {/* ── Top: date, title, countdown ── */}
-      <div className="relative bg-mosque text-white overflow-hidden">
+      <div className="relative flex-1 flex flex-col bg-mosque text-white overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0">
           <Image src={latticeBg} alt="" fill sizes="100vw" className="object-cover opacity-15" />
         </div>
 
-        <Container className="relative">
+        <Container className="relative w-full flex-1 flex flex-col">
           {/* Date bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-x-4 gap-y-1 py-4 border-b border-white/20 text-base min-h-[4.5rem]">
+          <div className="flex flex-wrap justify-between sm:grid sm:grid-cols-3 items-center gap-x-4 gap-y-0.5 py-2 sm:py-4 border-b border-white/15 text-xs sm:text-base text-white/90 min-h-[3.25rem] sm:min-h-[4.5rem]">
             <p className="col-span-1">{clock?.longDate ?? " "}</p>
-            <p className="text-right sm:text-center text-xl font-semibold tabular-nums">
+            <p className="text-right sm:text-center text-lg sm:text-xl font-medium text-white tabular-nums">
               {clock ? <><span className="sr-only">Time now: </span>{clock.clock}</> : " "}
             </p>
-            <div className="col-span-2 sm:col-span-1 flex flex-wrap sm:flex-col justify-between sm:items-end gap-x-4 text-white/85">
+            <div className="w-full sm:w-auto sm:col-span-1 flex flex-wrap sm:flex-col justify-between sm:items-end gap-x-3 text-white/85">
               <p>{todayTimes?.hijri}</p>
               {todayTimes?.hijriArabic && (
-                <p lang="ar" dir="rtl">{todayTimes.hijriArabic}</p>
+                <p lang="ar" dir="rtl" className="ml-auto sm:ml-0">{todayTimes.hijriArabic}</p>
               )}
             </div>
           </div>
 
           {/* Title */}
-          <div className="text-center pt-10">
+          <div className="text-center pt-3 sm:pt-10">
             <p className="text-lg text-white/85">Prayer times</p>
-            <h2 id="prayer-times-heading" className="text-[clamp(1.625rem,4.5vw,2.5rem)] text-white mt-1">
+            {/* Phones: mosque name is already in the hero just above — keep it for screen readers only */}
+            <h2 id="prayer-times-heading" className="sr-only sm:not-sr-only sm:block text-[clamp(1.625rem,4.5vw,2.5rem)] text-white mt-1">
               Bournemouth Islamic Centre &amp; Central Mosque
             </h2>
-            <p className="text-base text-white/85 mt-2">4 St Stephen&apos;s Rd, Bournemouth, <span className="whitespace-nowrap">BH2 6JJ</span></p>
+            <p className="hidden sm:block text-base text-white/85 mt-2">4 St Stephen&apos;s Rd, Bournemouth, <span className="whitespace-nowrap">BH2 6JJ</span></p>
           </div>
 
           {/* Countdown */}
-          <div className="text-center py-12 sm:py-16 min-h-[17rem]">
+          <div className="flex-1 flex flex-col justify-center text-center pt-8 pb-10 sm:py-16 min-h-[8.5rem] sm:min-h-[17rem]">
             {next && remaining ? (
               <>
-                <p className="text-[clamp(1.375rem,3.5vw,2rem)] mb-6">
+                <p className="text-xl sm:text-[clamp(1.375rem,3.5vw,2rem)] text-white/90 mb-2 sm:mb-5">
                   {next.mode === "iqamah" ? "Iqamah for " : "The prayer of "}
-                  <strong className="font-semibold">{next.label}</strong>
+                  <strong className="font-semibold text-gold-light">{next.label}</strong>
                   {next.tomorrow ? " (tomorrow)" : ""} is in
                 </p>
-                <div className="flex items-start justify-center gap-2 sm:gap-4" aria-hidden="true">
+                <div className="flex items-start justify-center gap-1.5 sm:gap-4" aria-hidden="true">
                   <CountdownUnit value={remaining.h} label="Hours" />
                   <Colon />
                   <CountdownUnit value={remaining.m} label="Minutes" />
@@ -249,37 +250,38 @@ export default function PrayerTimesClient({ allTimes }: Props) {
       </div>
 
       {/* ── Bottom: prayer cards ── */}
-      <div className="bg-white pt-6 pb-14">
+      <div className="bg-white pt-5 sm:pt-6 pb-6 sm:pb-14">
         <Container>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+          <ul className="grid grid-cols-3 gap-x-2 gap-y-3.5 sm:gap-3">
             {rows.map((row) => {
               const isNext = next?.key === row.key;
               return (
                 <li
                   key={row.key}
-                  className={`relative rounded-lg px-3 py-5 sm:py-6 text-center ${
-                    isNext ? "bg-mosque text-white" : "bg-surface text-mosque-deep"
+                  className={`relative rounded px-1 sm:px-3 py-2.5 sm:py-5 text-center ${
+                    isNext ? "bg-mosque text-white" : "bg-ivory text-mosque ring-1 ring-inset ring-surface"
                   }`}
                   aria-current={isNext ? "time" : undefined}
                 >
                   {isNext && (
-                    <span className="absolute top-2 right-2 rounded bg-gold px-2 py-0.5 text-xs font-semibold text-ink">
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:top-2 sm:right-2 rounded bg-gold px-2 sm:py-0.5 text-xs leading-6 font-semibold text-ink">
                       Next
                     </span>
                   )}
-                  <p className="text-lg sm:text-xl font-semibold">
+                  <p className="text-base sm:text-xl font-medium">
                     {row.label}
-                    <span lang="ar" className={`block text-base font-normal ${isNext ? "text-white/85" : "text-muted"}`}>
+                    <span lang="ar" className={`hidden sm:block text-base font-normal ${isNext ? "text-white/85" : "text-muted"}`}>
                       {row.arabic}
                     </span>
                   </p>
-                  <p className="mt-1 text-[clamp(2.25rem,8vw,3.25rem)] font-semibold leading-tight tabular-nums">
+                  <p className="mt-0.5 sm:mt-1 text-[clamp(1.75rem,7.5vw,3.25rem)] font-medium leading-tight tabular-nums tracking-tight">
                     {row.adhan ? displayTime(row.adhan) : "–:––"}
                   </p>
-                  <p className={`mt-1 text-base sm:text-lg ${isNext ? "text-white" : "text-ink"}`}>
+                  <p className={`sm:mt-1 text-xs sm:text-lg leading-snug min-[380px]:whitespace-nowrap tracking-tight sm:tracking-normal ${isNext ? "text-white" : "text-ink"}`}>
                     {row.iqamah ? (
                       <>
-                        Iqamah <span className="font-semibold tabular-nums">{displayTime(row.iqamah)}</span>
+                        <span className={`block min-[380px]:inline ${isNext ? "text-white/85" : "text-muted"}`}>Iqamah</span>{" "}
+                        <span className="font-medium tabular-nums">{displayTime(row.iqamah)}</span>
                       </>
                     ) : (
                       <span className={isNext ? "text-white/85" : "text-muted"}>
@@ -294,40 +296,41 @@ export default function PrayerTimesClient({ allTimes }: Props) {
 
           {/* Jumuah bar — every week */}
           <div
-            className={`mt-3 sm:mt-4 rounded-lg px-5 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-6 ${
-              clock?.isFriday ? "bg-gold/25 text-ink" : "bg-surface text-mosque-deep"
+            className={`mt-2 sm:mt-3 rounded px-3 sm:px-5 py-2 sm:py-3 grid grid-cols-[auto_1fr] sm:flex sm:flex-wrap md:flex-nowrap items-center sm:justify-between gap-x-3 gap-y-1 sm:gap-x-6 ${
+              clock?.isFriday ? "bg-gold/25 text-ink" : "bg-ivory text-mosque ring-1 ring-inset ring-surface"
             }`}
           >
-            <p className="text-xl font-semibold">
-              Jumu&apos;ah <span className="font-normal text-ink">(every Friday)</span>
+            <p className="text-lg sm:text-xl font-medium leading-tight sm:whitespace-nowrap">
+              Jumu&apos;ah{" "}
+              <span className="block sm:inline text-xs sm:text-lg font-normal text-muted">Fridays</span>
             </p>
-            <dl className="flex flex-wrap gap-x-6 gap-y-1 text-lg text-ink">
-              <div className="flex gap-2">
-                <dt>English khutbah</dt>
-                <dd className="font-semibold tabular-nums">{jummahInfo.khutbahEnglish}</dd>
+            <dl className="grid grid-cols-3 gap-1 text-center sm:flex sm:flex-wrap sm:gap-x-6 sm:gap-y-1 sm:text-left text-lg text-ink">
+              <div className="flex flex-col sm:flex-row sm:gap-2">
+                <dt className="text-xs sm:text-lg leading-snug text-muted">English<span className="hidden sm:inline"> khutbah</span></dt>
+                <dd className="font-medium tabular-nums">{jummahInfo.khutbahEnglish}</dd>
               </div>
-              <div className="flex gap-2">
-                <dt>Arabic khutbah</dt>
-                <dd className="font-semibold tabular-nums">{jummahInfo.khutbah}</dd>
+              <div className="flex flex-col sm:flex-row sm:gap-2">
+                <dt className="text-xs sm:text-lg leading-snug text-muted">Arabic<span className="hidden sm:inline"> khutbah</span></dt>
+                <dd className="font-medium tabular-nums">{jummahInfo.khutbah}</dd>
               </div>
-              <div className="flex gap-2">
-                <dt>Prayer</dt>
-                <dd className="font-semibold tabular-nums">{jummahInfo.prayer}</dd>
+              <div className="flex flex-col sm:flex-row sm:gap-2">
+                <dt className="text-xs sm:text-lg leading-snug text-muted">Prayer</dt>
+                <dd className="font-medium tabular-nums">{jummahInfo.prayer}</dd>
               </div>
             </dl>
           </div>
 
           {/* Download */}
-          <div className="mt-6 flex justify-center">
+          <div className="mt-3 sm:mt-6 flex justify-center">
             <a
               href="/bournemouth-islamic-center/prayer-times-2026.pdf"
               download
-              className="inline-flex items-center justify-center gap-2 min-h-12 px-6 rounded text-lg font-semibold text-mosque border-2 border-mosque hover:bg-mosque hover:text-white transition-colors duration-150"
+              className="inline-flex items-center justify-center gap-2 min-h-12 px-4 sm:px-6 rounded text-lg font-semibold text-mosque border-2 border-mosque hover:bg-mosque hover:text-white transition-colors duration-150"
             >
               <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              Download timetable (PDF)
+              <span>Download timetable<span className="hidden min-[380px]:inline"> (PDF)</span></span>
             </a>
           </div>
         </Container>
