@@ -75,14 +75,19 @@ these rules (approved by the site owner, Oct 2026):
 - Contact form, donate copy buttons, footer links, filter chips: larger text and tap targets.
 - Footer: newsletter subscribe form removed (it did nothing); column is now "Follow us"; copyright spacing fixed.
 - `next.config.ts`: `allowedDevOrigins` for testing on phones over Wi-Fi.
+- Donate: real HSBC account (from the paying-in book) in `src/data/donations.ts`, shown as a single bank-details
+  card (`BankDetailsCard.tsx`) with copy buttons + "How to give" steps. No separate Sadaqah/Zakat funds — donors
+  can put that in the payment reference. "Registered charity" section uses real Charity Commission data
+  (`src/data/charity.ts`, no. 1032058; sources in `CHARITY.md`). The charity is **not recognised by HMRC for Gift Aid** — don't mention Gift Aid.
+  "Where your money goes" shows real figures from the filed 2025/26 accounts (`latestAccounts` in `charity.ts`).
+  "Set up a regular gift" section removed.
 
 ## Still to do before launch
-1. **Donate page bank details are placeholders** (`20-00-00` / `12345678` / `87654321`) in `src/data/donations.ts`
-   — must be replaced with the real accounts.
-2. **Social links** in the footer (Facebook, YouTube, Instagram) point to `#` — need real URLs or removal.
-3. **Imam's name** on the About page is still "Sheikh [Name]" (`src/app/about/page.tsx`).
-4. **Prayer timetable** needs a 2027 CSV (and PDF in `public/`) before January 2027.
-5. Review placeholder-looking content on About (timeline, services, "400+ worshippers"), Events and Reverts with
+1. **Social links** in the footer (Facebook, YouTube, Instagram) point to `#` — need real URLs or removal.
+2. **Imam's name** on the About page is still "Sheikh [Name]" (`src/app/about/page.tsx`).
+3. **Prayer timetable** needs a 2027 CSV (and PDF in `public/`) before January 2027.
+4. Review placeholder-looking content on About (timeline, services, "400+ worshippers"), Events and Reverts with
    the mosque committee.
-6. `ThemeProvider.tsx` and `ProjectCard.tsx` are unused — delete if not needed.
-7. `tailwind.tokens.js` is stale/unused (still lists the old palette and fonts) — delete or update.
+5. `ThemeProvider.tsx` and `ProjectCard.tsx` are unused — delete if not needed.
+6. `tailwind.tokens.js` is stale/unused (still lists the old palette and fonts) — delete or update.
+7. Update `latestAccounts` in `src/data/charity.ts` each year once new accounts are filed (usually by August).

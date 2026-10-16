@@ -50,14 +50,12 @@ export interface Project {
   completedYear?: string;
 }
 
-export interface DonationOption {
-  id: string;
-  label: string;
-  description: string;
+export interface BankAccount {
+  bankName: string;
+  branch: string;
   accountName: string;
   sortCode: string;
   accountNumber: string;
-  reference?: string;
 }
 
 export interface PrayerTime {
