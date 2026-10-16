@@ -7,7 +7,6 @@ import geoTexture from "@/assets/geo-texture.jpg";
 
 import Container from "@/components/ui/Container";
 import DonationCTAStrip from "@/components/ui/DonationCTAStrip";
-import EventCard from "@/components/ui/EventCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import PrayerTimesWidget from "@/components/home/PrayerTimesWidget";
 import QuickLinksGrid from "@/components/home/QuickLinksGrid";
@@ -15,7 +14,6 @@ import UrgentNotices from "@/components/home/UrgentNotices";
 
 import revertPhoto from "@/assets/revert-story.jpg";
 
-import { events } from "@/data/events";
 import { jummahInfo } from "@/data/prayer-times";
 
 export const metadata: Metadata = {
@@ -30,8 +28,6 @@ function GoldDivider() {
 }
 
 export default function HomePage() {
-  const upcomingEvents = events.slice(0, 3);
-
   return (
     <>
       {/* ── Urgent notices — only rendered when src/data/notices.ts has entries ── */}
@@ -97,8 +93,8 @@ export default function HomePage() {
             Today at the mosque
           </h2>
           <p className="text-lg text-muted mb-8 leading-relaxed max-w-prose">
-            Open daily for all five prayers. Our doors are open to all Muslims and those who wish to
-            learn more about Islam.
+            Our brothers&apos; and sisters&apos; prayer rooms are open 24 hours a day, 7 days a week.
+            Everyone is welcome.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
@@ -112,8 +108,17 @@ export default function HomePage() {
                 ),
               },
               {
-                title: "Weekend school",
-                detail: "Sat 9am–12pm · ages 5–16",
+                title: "Prayer rooms open 24/7",
+                detail: "Separate rooms for brothers and sisters",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Madrasah for children",
+                detail: "Contact the mosque for details",
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -121,17 +126,8 @@ export default function HomePage() {
                 ),
               },
               {
-                title: "Sisters' space",
-                detail: "Weekly halaqa Wednesdays",
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                ),
-              },
-              {
-                title: "Open to all",
-                detail: "Visitors always welcome",
+                title: "Everyone welcome",
+                detail: "Brothers, sisters, school trips and anyone interested in Islam",
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -148,6 +144,13 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <p className="mt-6 text-lg text-ink">
+            We also offer nikah (marriage), janazah (funeral) services, and you can take your
+            shahadah at the mosque.{" "}
+            <Link href="/about#services" className="font-semibold text-mosque underline underline-offset-4 decoration-2 hover:text-mosque-deep transition-colors duration-150">
+              All our services
+            </Link>
+          </p>
         </Container>
       </section>
 
@@ -163,26 +166,6 @@ export default function HomePage() {
             subtitle="Everything you need in one place"
           />
           <QuickLinksGrid />
-        </Container>
-      </section>
-
-      {/* ── Upcoming Events ── */}
-      <section className="py-24 bg-white">
-        <Container>
-          <SectionHeading
-            title="Events & activities"
-            subtitle="What's on this week and beyond"
-            action={
-              <Link href="/events" className="inline-flex items-center min-h-11 text-lg font-semibold text-mosque underline underline-offset-4 decoration-2 hover:text-mosque-deep transition-colors duration-150">
-                Full calendar →
-              </Link>
-            }
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {upcomingEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
         </Container>
       </section>
 

@@ -8,30 +8,13 @@ import insideImg from "@/assets/inside.jpg";
 import khutbahImg from "@/assets/khutbah.jpg";
 import geoTexture from "@/assets/geo-texture.jpg";
 
+import { charity } from "@/data/charity";
+import { services, welcomeGroups } from "@/data/services";
+
 export const metadata: Metadata = {
   title: "About us",
-  description: "Learn about Bournemouth Islamic Centre — our mission, history, services, and community.",
+  description: "Learn about Bournemouth Islamic Centre — our mission, services, and community.",
 };
-
-const services = [
-  { title: "Daily prayers", desc: "Five daily prayers with congregation, open to all Muslims." },
-  { title: "Quran & Islamic education", desc: "Weekend school for children, adult Quran circles, and Tajweed classes." },
-  { title: "Family services", desc: "Nikah ceremonies, naming ceremonies, and family counselling." },
-  { title: "Interfaith outreach", desc: "Engaging with local schools, faith groups, and civic organisations." },
-  { title: "Sisters' services", desc: "Dedicated prayer space, weekly halaqa, and support for revert sisters." },
-  { title: "Community welfare", desc: "Weekly food bank, hardship fund, and support for vulnerable community members." },
-  { title: "Youth programme", desc: "Regular youth club, trips, sports, and mentoring for ages 11–18." },
-  { title: "Funeral services", desc: "Janazah prayer coordination and support for bereaved families." },
-];
-
-const timeline = [
-  { year: "1998", event: "Bournemouth Islamic Centre founded by a group of local Muslim families." },
-  { year: "2003", event: "First permanent mosque building acquired on Mosque Road." },
-  { year: "2010", event: "Weekend school launched, now serving over 150 children." },
-  { year: "2015", event: "Major renovation of the main prayer hall completed." },
-  { year: "2020", event: "Community food bank established, continuing to serve 200+ families." },
-  { year: "2024", event: "Car park expansion and disabled access improvements completed." },
-];
 
 export default function AboutPage() {
   return (
@@ -67,6 +50,10 @@ export default function AboutPage() {
                 <p>
                   The centre operates for the benefit of all Muslims irrespective of their ethnic background,
                   gender, country of origin, or age.
+                </p>
+                <p>
+                  We have been a registered charity since {charity.registeredYear} (charity
+                  no. {charity.number}).
                 </p>
               </div>
               <div className="mt-8">
@@ -146,7 +133,7 @@ export default function AboutPage() {
               <Image src={insideImg} alt="Inside the Bournemouth Islamic Centre prayer hall" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
               <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
-                {["400+ worshippers", "Sisters' gallery", "Islamic library", "Weekend school"].map((badge) => (
+                {["Open 24/7", "Brothers' prayer room", "Sisters' prayer room", "Madrasah"].map((badge) => (
                   <span key={badge} className="bg-ink/75 text-white text-base font-medium px-3 py-1 rounded-full">
                     {badge}
                   </span>
@@ -158,17 +145,17 @@ export default function AboutPage() {
               <h2 className="text-[clamp(1.875rem,5vw,2.25rem)] text-ink mb-6">Our mosque</h2>
               <div className="space-y-4 text-sm text-muted leading-relaxed max-w-[540px]">
                 <p>
-                  Our main prayer hall can accommodate over 400 worshippers, with a separate, fully
-                  equipped prayer space for sisters on the upper floor. The hall was extensively
-                  renovated in 2015 to provide a calm, beautiful environment for worship.
+                  We have separate prayer rooms for brothers and sisters, and both are open
+                  24 hours a day, 7 days a week.
                 </p>
                 <p>
-                  The centre also houses a dedicated Wudu area, an Islamic library, a classroom for
-                  the weekend school, and a communal kitchen used for community iftars and events.
+                  Everyone is welcome: {welcomeGroups.join(", ").toLowerCase()}. Whether you are
+                  visiting with a school group or simply curious about Islam, we would be glad to
+                  see you.
                 </p>
                 <p>
-                  We welcome non-Muslim visitors — please contact us to arrange a guided tour or
-                  visit during our regular open days.
+                  For school trips and group visits, please contact us in advance so we can
+                  prepare for you.
                 </p>
               </div>
               <Link
@@ -203,7 +190,7 @@ export default function AboutPage() {
                 <p>
                   He holds an ijazah in Quranic recitation (Hafs) and a degree in Islamic Studies.
                   He leads all five daily prayers, delivers the Friday Jummah khutbah, and oversees
-                  the weekend school curriculum.
+                  the madrasah.
                 </p>
               </div>
             </div>
@@ -217,53 +204,36 @@ export default function AboutPage() {
       </section>
 
       {/* ── Services ── */}
-      <section className="py-24 bg-white">
+      <section id="services" className="py-24 bg-white scroll-mt-24">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-16">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-mosque mb-3">What we offer</p>
             <h2 className="text-[clamp(1.875rem,5vw,2.25rem)] text-ink">Our services</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service) => (
               <div
                 key={service.title}
-                className="bg-white border border-ink/10 rounded-lg p-6 hover:border-gold/40 transition-colors duration-150"
+                className="flex flex-col bg-white border border-ink/10 rounded-lg p-6 hover:border-gold/40 transition-colors duration-150"
               >
                 <div className="w-2 h-2 rounded-full bg-gold mb-5" aria-hidden="true" />
                 <h3 className="text-[1.25rem] text-ink mb-2">{service.title}</h3>
                 <p className="text-base text-muted leading-relaxed">{service.desc}</p>
+                {service.href && (
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center gap-1.5 mt-auto pt-4 min-h-11 text-lg font-semibold text-mosque underline underline-offset-4 decoration-2 hover:text-mosque-deep transition-colors duration-150"
+                  >
+                    {service.linkLabel}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                )}
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── History Timeline ── */}
-      <section className="py-24 bg-ivory relative overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 opacity-[0.04]">
-          <Image src={geoTexture} alt="" fill sizes="100vw" className="object-cover" />
-        </div>
-        <div className="relative max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-16">
-          <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-mosque mb-3">Since 1998</p>
-            <h2 className="text-[clamp(1.875rem,5vw,2.25rem)] text-ink">Our history</h2>
-          </div>
-          <div className="relative max-w-2xl mx-auto">
-            {/* Vertical line */}
-            <div aria-hidden="true" className="absolute left-8 top-0 bottom-0 w-px bg-gold/40" />
-            <div className="space-y-5">
-              {timeline.map((item) => (
-                <div key={item.year} className="flex gap-6 relative">
-                  <div className="flex-shrink-0 w-16 h-14 bg-[#F6EEDC] border border-gold/40 rounded flex items-center justify-center z-10 text-base font-semibold text-ink">
-                    {item.year}
-                  </div>
-                  <div className="flex-grow bg-white border border-ink/10 rounded-lg p-4 hover:border-gold/30 transition-colors duration-150">
-                    <p className="text-base text-ink">{item.event}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="mt-10 text-center text-lg text-ink">
+            Everyone is welcome — {welcomeGroups.join(", ").toLowerCase()}.
+          </p>
         </div>
       </section>
     </>

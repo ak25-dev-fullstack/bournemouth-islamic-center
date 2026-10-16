@@ -128,10 +128,9 @@ export default function ContactPage() {
               <h2 className="text-[1.5rem] text-ink mb-4">Visiting information</h2>
               <div className="space-y-3">
                 {[
-                  { title: "Parking", desc: "Free parking available on-site for up to 40 cars. Street parking also available nearby." },
-                  { title: "Public transport", desc: "Bournemouth town centre buses stop within 5 minutes' walk. Routes 1, 5, and 21." },
-                  { title: "Accessibility", desc: "The mosque is fully wheelchair accessible with ramp access and an accessible ablution room." },
-                  { title: "Visiting times", desc: "Visitors are welcome at any prayer time. For a guided tour, please contact us in advance." },
+                  { title: "Parking", desc: "There is parking for two cars right by the mosque. There is also free parking on the public street just by the mosque, near Bournemouth Council." },
+                  { title: "By bus", desc: "The nearest bus stop is Bourne Avenue, by the Town Hall (BCP Council). Bournemouth Square, where most town-centre buses stop, is a short walk away. For routes and times, see morebus.co.uk or bustimes.org." },
+                  { title: "Visiting times", desc: "Our brothers' and sisters' prayer rooms are open 24/7 and everyone is welcome. For school trips and group visits, please contact us in advance." },
                 ].map((item) => (
                   <div key={item.title} className="bg-white border border-ink/10 rounded-lg p-4 hover:border-gold/30 transition-colors duration-150">
                     <p className="text-lg font-semibold text-ink mb-1">{item.title}</p>
@@ -190,9 +189,12 @@ export default function ContactPage() {
                     <select id="topic" name="topic" className={inputClass}>
                       <option value="">Select a topic</option>
                       <option value="General Enquiry">General enquiry</option>
+                      <option value="Madrasah">Madrasah (children&apos;s classes)</option>
+                      <option value="Nikah">Nikah (marriage)</option>
+                      <option value="Janazah">Janazah (funeral)</option>
+                      <option value="Shahadah / Reverts">Taking shahadah / new Muslim support</option>
+                      <option value="School Trip / Group Visit">School trip or group visit</option>
                       <option value="Events & Bookings">Events &amp; bookings</option>
-                      <option value="Education & Classes">Education &amp; classes</option>
-                      <option value="New Muslim Support">New Muslim support</option>
                       <option value="Donation Enquiry">Donation enquiry</option>
                       <option value="Media & Press">Media &amp; press</option>
                     </select>

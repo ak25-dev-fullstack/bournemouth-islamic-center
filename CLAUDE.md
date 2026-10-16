@@ -11,6 +11,23 @@ is a 404 because of the base path). To test on a phone/iPad on the same Wi-Fi, u
 make sure it is listed in `allowedDevOrigins` in `next.config.ts` — otherwise the page loads but nothing is
 interactive (e.g. the Menu button does nothing).
 
+## What the mosque offers (confirmed by the site owner, Oct 2026)
+
+This is the **real** list of services — use it as the source of truth for any copy. Don't invent other services,
+classes, groups or facilities (e.g. food bank, youth club, library, weekend school times, capacity figures);
+if something isn't listed here, treat it as unconfirmed placeholder.
+
+- **Prayer rooms open 24/7** — separate rooms for brothers (male) and sisters (female).
+- **Jumu'ah (Friday prayer)** — times in `src/data/prayer-times.ts` (`jummahInfo`).
+- **Madrasah for children** — no timetable published; visitors should **contact the mosque for details**.
+- **Nikah** (marriage) ceremonies.
+- **Janazah** (funeral) services.
+- **Reverts** — people can take their **shahadah at the mosque**.
+- **Everyone is welcome:** brothers, sisters, school trips, and anyone interested in Islam.
+
+The list lives in `src/data/services.ts` (About page "Our services" grid, `/about#services`). The home page
+"Today at the mosque" cards and the contact page "Visiting times" / enquiry topics reflect the same list.
+
 ## Audience & design principles
 
 The site must be easy to use for **elderly visitors** on phone, iPad/tablet and desktop. Keep all new UI within
@@ -73,7 +90,8 @@ these rules (approved by the site owner, Oct 2026):
   tile replaced by "Prayer times".
 - Event cards: stacked on small phones, full descriptions (no line clamp).
 - Contact form, donate copy buttons, footer links, filter chips: larger text and tap targets.
-- Footer: newsletter subscribe form removed (it did nothing); column is now "Follow us"; copyright spacing fixed.
+- Footer: newsletter subscribe form removed (it did nothing); "Follow us" social column later removed too (no real
+  links); copyright spacing fixed.
 - `next.config.ts`: `allowedDevOrigins` for testing on phones over Wi-Fi.
 - Donate: real HSBC account (from the paying-in book) in `src/data/donations.ts`, shown as a single bank-details
   card (`BankDetailsCard.tsx`) with copy buttons + "How to give" steps. No separate Sadaqah/Zakat funds — donors
@@ -83,11 +101,16 @@ these rules (approved by the site owner, Oct 2026):
   "Set up a regular gift" section removed.
 
 ## Still to do before launch
-1. **Social links** in the footer (Facebook, YouTube, Instagram) point to `#` — need real URLs or removal.
+1. **Social links:** the footer "Follow us" column was removed (Oct 2026) because the links were placeholders —
+   add it back only with real Facebook/YouTube/Instagram URLs.
 2. **Imam's name** on the About page is still "Sheikh [Name]" (`src/app/about/page.tsx`).
 3. **Prayer timetable** needs a 2027 CSV (and PDF in `public/`) before January 2027.
-4. Review placeholder-looking content on About (timeline, services, "400+ worshippers"), Events and Reverts with
-   the mosque committee.
+4. Review remaining placeholder content with the mosque committee: About (imam bio; the "Our history" timeline
+   was removed Oct 2026 because it was invented and no public history could be found — only the 1994 charity
+   registration and use as a COVID-19 vaccination centre in 2021 are verifiable; re-add if the committee
+   supplies real dates), Events
+   (`src/data/events.ts` — Quran circle, sisters' halaqa, youth club etc. are unconfirmed, and the Jummah event
+   says 13:00) and Reverts. Services are now real (see "What the mosque offers").
 5. `ThemeProvider.tsx` and `ProjectCard.tsx` are unused — delete if not needed.
 6. `tailwind.tokens.js` is stale/unused (still lists the old palette and fonts) — delete or update.
 7. Update `latestAccounts` in `src/data/charity.ts` each year once new accounts are filed (usually by August).
