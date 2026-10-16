@@ -323,7 +323,7 @@ export default function PrayerTimesClient({ allTimes }: Props) {
           {/* Download */}
           <div className="mt-3 sm:mt-6 flex justify-center">
             <a
-              href="/bournemouth-islamic-center/prayer-times-2026.pdf"
+              href="/prayer-times-2026.pdf"
               download
               className="inline-flex items-center justify-center gap-2 min-h-12 px-4 sm:px-6 rounded text-lg font-semibold text-mosque border-2 border-mosque hover:bg-mosque hover:text-white transition-colors duration-150"
             >

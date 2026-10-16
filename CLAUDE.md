@@ -2,12 +2,11 @@
 
 # Bournemouth Islamic Centre website
 
-Static Next.js 16 site (`output: "export"`, `basePath: "/bournemouth-islamic-center"`) deployed to GitHub Pages
-on every push to `main` (`.github/workflows/deploy.yml`). Tailwind v4 — design tokens live in `src/app/globals.css`
+Static Next.js 16 site (`output: "export"`, no base path) deployed to GitHub Pages at **https://biccm.org**
+(custom domain; `public/CNAME`, DNS at Namecheap) on every push to `main` (`.github/workflows/deploy.yml`). Tailwind v4 — design tokens live in `src/app/globals.css`
 (`@theme`), **not** in `tailwind.tokens.js` (that file is unused). Full design system: `DESIGN.md`.
 
-Local dev: `npm run dev` → open **http://localhost:3000/bournemouth-islamic-center** (the bare `localhost:3000`
-is a 404 because of the base path). To test on a phone/iPad on the same Wi-Fi, use the "Network:" address and
+Local dev: `npm run dev` → open **http://localhost:3000**. To test on a phone/iPad on the same Wi-Fi, use the "Network:" address and
 make sure it is listed in `allowedDevOrigins` in `next.config.ts` — otherwise the page loads but nothing is
 interactive (e.g. the Menu button does nothing).
 
