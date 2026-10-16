@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Private source photos (e.g. bank paying-in book) — never commit
+/photos/
