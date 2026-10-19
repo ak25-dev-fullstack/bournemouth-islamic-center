@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Private source photos (e.g. bank paying-in book) — never commit
 /photos/
+
+# Reverts page hidden for now (kept locally, not deployed)
+/src/app/reverts/

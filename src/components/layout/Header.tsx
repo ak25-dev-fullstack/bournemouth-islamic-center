@@ -9,7 +9,7 @@ import iconOnly from "@/assets/icon_only.png";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Events", href: "/events" },
-  { label: "Reverts", href: "/reverts" },
+  // { label: "Reverts", href: "/reverts" }, // page hidden for now
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

@@ -72,7 +72,6 @@ export default function Footer() {
                 { label: "Prayer times", href: "/#prayer-times" },
                 { label: "Events", href: "/events" },
                 { label: "Donate", href: "/donate" },
-                { label: "Revert stories", href: "/reverts" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="inline-flex items-center min-h-11 font-medium underline-offset-4 hover:underline [overflow-wrap:anywhere]">

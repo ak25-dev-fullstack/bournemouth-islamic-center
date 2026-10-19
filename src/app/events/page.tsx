@@ -100,7 +100,7 @@ function PastEventCard({ event }: { event: Event }) {
 
 export default function EventsPage() {
   const weeklyEvents = events.filter((e) => e.recurring);
-  const specialEvents = events.filter((e) => e.category === "special");
+  // const specialEvents = events.filter((e) => e.category === "special");
   const pastEvents = events.filter((e) => e.category === "past");
 
   return (
@@ -119,7 +119,7 @@ export default function EventsPage() {
         <Container className="relative">
           <p className="text-sm font-semibold text-gold-light mb-3">What&apos;s on</p>
           <h1 className="text-[clamp(2.25rem,6.5vw,3.25rem)] text-white leading-tight">Events &amp; activities</h1>
-          <p className="text-white mt-3 text-lg">Regular programmes and upcoming special events</p>
+          <p className="text-white mt-3 text-lg">Jumu&apos;ah and community gatherings at the mosque</p>
         </Container>
       </div>
 
@@ -138,7 +138,7 @@ export default function EventsPage() {
           </div>
         </section>
 
-        {/* Special events */}
+        {/* Special events — hidden until real upcoming events are confirmed.
         {specialEvents.length > 0 && (
           <section aria-labelledby="special-heading">
             <div className="flex items-center gap-3 mb-6">
@@ -152,6 +152,7 @@ export default function EventsPage() {
             </div>
           </section>
         )}
+        */}
 
         {/* Host event CTA */}
         <div className="bg-white border border-ink/10 rounded-lg p-8 text-center hover:border-gold/30 transition-colors duration-150">
@@ -182,6 +183,16 @@ export default function EventsPage() {
             </div>
           </section>
         )}
+
+        {/* New-site disclaimer */}
+        <p className="border-t border-ink/10 pt-8 text-base text-muted leading-relaxed max-w-prose">
+          This is a new website and its content is still being updated. For the latest information
+          about events at the mosque, please{" "}
+          <Link href="/contact" className="text-mosque font-medium underline underline-offset-4 hover:text-mosque-deep">
+            contact us
+          </Link>
+          .
+        </p>
 
       </Container>
     </div>

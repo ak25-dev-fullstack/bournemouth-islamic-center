@@ -1,20 +1,22 @@
 import { Event } from "@/types";
+import { jummahInfo } from "@/data/prayer-times";
 
 export const events: Event[] = [
   {
     id: "1",
     title: "Jummah Prayer",
     description:
-      "Weekly Friday congregational prayer. Khutbah begins promptly. Arrive early for best space.",
+      `Weekly Friday congregational prayer. English khutbah ${jummahInfo.khutbahEnglish}, Arabic khutbah ${jummahInfo.khutbah}, prayer ${jummahInfo.prayer}. Arrive early for the best space.`,
     date: "Every Friday",
-    time: "13:00",
-    endTime: "14:00",
+    time: jummahInfo.khutbahEnglish,
     audience: "All",
     location: "Main Prayer Hall",
     recurring: true,
     recurringLabel: "Every Friday",
     category: "weekly",
   },
+  // Unconfirmed placeholder events — hidden until the mosque confirms them.
+  /*
   {
     id: "2",
     title: "Quran Circle for Adults",
@@ -96,6 +98,7 @@ export const events: Event[] = [
     registrationRequired: true,
     category: "special",
   },
+  */
   {
     id: "8",
     title: "Eid al Adha prayer 2026",

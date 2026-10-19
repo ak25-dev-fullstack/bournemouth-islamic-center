@@ -109,9 +109,12 @@ these rules (approved by the site owner, Oct 2026):
 4. Review remaining placeholder content with the mosque committee: About (imam bio; the "Our history" timeline
    was removed Oct 2026 because it was invented and no public history could be found — only the 1994 charity
    registration and use as a COVID-19 vaccination centre in 2021 are verifiable; re-add if the committee
-   supplies real dates), Events
-   (`src/data/events.ts` — Quran circle, sisters' halaqa, youth club etc. are unconfirmed, and the Jummah event
-   says 13:00) and Reverts. Services are now real (see "What the mosque offers").
+   supplies real dates). Events page now shows only Jumu'ah (times from `jummahInfo`) and the real past Eid
+   al-Adha 2026 video; the other placeholder events are commented out in `src/data/events.ts` and the "Upcoming
+   special events" section is commented out in `src/app/events/page.tsx`, with a "new site, still being updated"
+   note at the bottom. The **Reverts page is hidden** (Oct 2026): `src/app/reverts/` is gitignored and untracked
+   so it isn't deployed, and its links are removed from the header (commented out), footer, home quick links and
+   home "Revert stories" section — restore these if the page comes back. Services are now real (see "What the mosque offers").
 5. `ThemeProvider.tsx` and `ProjectCard.tsx` are unused — delete if not needed.
 6. `tailwind.tokens.js` is stale/unused (still lists the old palette and fonts) — delete or update.
 7. Update `latestAccounts` in `src/data/charity.ts` each year once new accounts are filed (usually by August).

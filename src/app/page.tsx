@@ -12,8 +12,6 @@ import PrayerTimesWidget from "@/components/home/PrayerTimesWidget";
 import QuickLinksGrid from "@/components/home/QuickLinksGrid";
 import UrgentNotices from "@/components/home/UrgentNotices";
 
-import revertPhoto from "@/assets/revert-story.jpg";
-
 import { jummahInfo } from "@/data/prayer-times";
 
 export const metadata: Metadata = {
@@ -166,48 +164,6 @@ export default function HomePage() {
             subtitle="Everything you need in one place"
           />
           <QuickLinksGrid />
-        </Container>
-      </section>
-
-      {/* ── Revert Stories ── */}
-      <section className="py-24 bg-ivory">
-        <Container>
-          <SectionHeading
-            title="Revert stories"
-            subtitle="Journeys to Islam from members of our community"
-          />
-          <Link
-            href="/reverts"
-            className="group block bg-white border border-ink/10 rounded-lg overflow-hidden hover:border-gold/40 transition-colors duration-150 max-w-3xl mx-auto"
-          >
-            <div className="relative aspect-[16/7] overflow-hidden">
-              <Image
-                src={revertPhoto}
-                alt="Revert stories"
-                fill
-                sizes="(min-width: 1024px) 768px, 100vw"
-                className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
-              />
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
-            </div>
-            <div className="p-8">
-              <p className="text-sm font-semibold text-mosque mb-4">Revert stories</p>
-              <blockquote className="text-[1.375rem] text-ink leading-snug mb-4">
-                &ldquo;Whoever accepts Islam will have what came before forgiven.&rdquo;
-              </blockquote>
-              <p className="text-base text-muted mb-6 leading-relaxed">
-                — Sahih Muslim 121 &nbsp;·&nbsp; The Prophet ﷺ assured us that embracing Islam wipes the slate clean.
-                Every revert begins a new chapter — free from the past, filled with hope and purpose.
-                Read the stories of those who found their way to Islam right here in Bournemouth.
-              </p>
-              <span className="inline-flex items-center gap-1.5 text-lg font-semibold text-mosque underline underline-offset-4 decoration-2 group-hover:text-mosque-deep transition-colors duration-150">
-                Read their stories
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-            </div>
-          </Link>
         </Container>
       </section>
 
