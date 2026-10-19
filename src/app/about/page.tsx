@@ -175,22 +175,17 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             <div className="relative rounded-lg overflow-hidden h-72 lg:h-full min-h-[300px]">
-              <Image src={imamImg} alt="Imam of Bournemouth Islamic Centre" fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover object-top" />
+              <Image src={imamImg} alt="Imam Majid Yasin, imam of Bournemouth Islamic Centre" fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover object-top" />
             </div>
             <div className="flex flex-col justify-center">
               <p className="text-sm font-semibold text-mosque mb-4">Leadership</p>
               <h2 className="text-[clamp(1.875rem,5vw,2.25rem)] text-ink mb-2">Meet our imam</h2>
-              <p className="text-lg font-medium text-muted mb-6">Sheikh [Name] — Lead Imam &amp; Scholar</p>
+              <p className="text-lg font-medium text-muted mb-6">Imam Majid Yasin — Imam, director &amp; community representative</p>
               <div className="space-y-4 text-sm text-muted leading-relaxed">
                 <p>
-                  Our imam has served the Bournemouth Muslim community for over a decade, providing
-                  spiritual leadership, pastoral care, and educational guidance to worshippers of all
-                  ages and backgrounds.
-                </p>
-                <p>
-                  He holds an ijazah in Quranic recitation (Hafs) and a degree in Islamic Studies.
-                  He leads all five daily prayers, delivers the Friday Jummah khutbah, and oversees
-                  the madrasah.
+                  Imam Majid Yasin is the imam of Bournemouth Islamic Centre &amp; Central Mosque. As well
+                  as leading the community in prayer, he serves as a director of the centre and
+                  represents the mosque in the wider Bournemouth community.
                 </p>
               </div>
             </div>

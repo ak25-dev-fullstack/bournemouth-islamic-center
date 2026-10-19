@@ -102,7 +102,9 @@ these rules (approved by the site owner, Oct 2026):
 ## Still to do before launch
 1. **Social links:** the footer "Follow us" column was removed (Oct 2026) because the links were placeholders —
    add it back only with real Facebook/YouTube/Instagram URLs.
-2. **Imam's name** on the About page is still "Sheikh [Name]" (`src/app/about/page.tsx`).
+2. **Imam:** name is now real — Imam Majid Yasin (imam, director & community representative; Oct 2026). The
+   invented bio (ijazah, degree, "over a decade") was removed. Confirm `src/assets/imam.jpg` is actually him,
+   and add a fuller bio only if the committee supplies one.
 3. **Prayer timetable** needs a 2027 CSV (and PDF in `public/`) before January 2027.
 4. Review remaining placeholder content with the mosque committee: About (imam bio; the "Our history" timeline
    was removed Oct 2026 because it was invented and no public history could be found — only the 1994 charity
