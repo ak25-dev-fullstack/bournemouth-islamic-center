@@ -65,12 +65,6 @@ export default function HomePage() {
                 Prayer times
               </Link>
               <Link
-                href="/donate"
-                className="inline-flex items-center justify-center min-h-12 px-7 rounded text-lg font-semibold bg-white/10 text-white border-2 border-white/70 hover:bg-white/20 transition-colors duration-150"
-              >
-                Donate
-              </Link>
-              <Link
                 href="/events"
                 className="inline-flex items-center justify-center min-h-12 px-7 rounded text-lg font-semibold bg-white/10 text-white border-2 border-white/70 hover:bg-white/20 transition-colors duration-150"
               >

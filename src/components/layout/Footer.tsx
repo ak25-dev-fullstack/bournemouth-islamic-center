@@ -51,7 +51,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="mailto:bic.sendmessage@gmail.com" className="inline-flex items-center min-h-11 font-medium underline-offset-4 hover:underline [overflow-wrap:anywhere]">
-                  bic.sendmessage@gmail.com
+                biccm@talk21.com
                 </a>
               </li>
               <li>
