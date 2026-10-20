@@ -90,7 +90,7 @@ export default function ContactPage() {
                       </svg>
                     ),
                     label: "Email",
-                    content: <a href="mailto:biccm@talk21.com" className="text-lg font-semibold text-mosque underline underline-offset-4 hover:text-mosque-deep transition-colors duration-150 [overflow-wrap:anywhere]">bic.sendmessage@gmail.com</a>,
+                    content: <a href="mailto:biccm@talk21.com" className="text-lg font-semibold text-mosque underline underline-offset-4 hover:text-mosque-deep transition-colors duration-150 [overflow-wrap:anywhere]">biccm@talk21.com</a>,
                   },
                 ].map(({ icon, label, content }) => (
                   <div key={label} className="flex gap-3">
